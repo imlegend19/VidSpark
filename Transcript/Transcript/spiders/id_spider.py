@@ -5,9 +5,8 @@ from scrapy.cmdline import execute
 
 
 class QuotesSpider(scrapy.Spider):
-    count = 0
 
-    with open("../../../ted/names.json", 'r') as file:
+    with open("../../../ted/bus_name.json", 'r') as file:
         data = json.load(file)
 
     url_auth = {}
@@ -35,4 +34,4 @@ class QuotesSpider(scrapy.Spider):
                'speaker': QuotesSpider.url_auth[url]}
 
 
-execute("scrapy crawl number -o id.json".split())
+execute("scrapy crawl number -o ../../../ted/bus_id.json".split())
