@@ -2,7 +2,7 @@ import json
 from urllib.request import urlretrieve
 
 if __name__ == '__main__':
-    with open("id.json", "r") as fp:
+    with open("bus_id.json", "r") as fp:
         data = json.load(fp)
 
     missed = []
@@ -14,12 +14,13 @@ if __name__ == '__main__':
         name = str(i["id"]) + ".vtt"
 
         try:
-            urlretrieve(url, "../dataset/" + name)
+            urlretrieve(url, "../dataset/business/" + name)
         except Exception:
             missed.append(url)
 
         count += 1
 
     if missed:
-        with open("missed_urls.txt", "w") as fp:
-            fp.writelines(missed)
+        with open("bus_vtt_missed_urls.txt", "w") as fp:
+            for each in missed:
+                fp.writelines(each)
