@@ -1,29 +1,51 @@
-import java.io.File
-
-import org.apache.spark.sql.SparkSession
-
-import scala.util.control.Breaks
+import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.log4j._
-import SrtParser._
+import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 
-class ReadSRT(val spark: SparkSession) {
-  case class Transcript(id: Int, startTime: String, endTime: String, message: String)
+class SetUpVidSpark(val spark: SparkSession, val path: String) {
+  def initDataset(): Unit = {
+    val df: DataFrame = spark.read
+      .format("csv")
+      .option("header", "true")
+      .load(path)
 
-  def parseFile(path: String): Unit = {
-    println("Parsing -> %s".format(path))
+    df.createOrReplaceTempView("data")
 
-    SrtParser.parse(path)
+    val ids: Seq[Int] = df.select("id")
+      .distinct()
+      .collect()
+      .map(r => r.getString(0).toInt)
+      .toList
+
+    val vidTextSchema = List(
+      StructField("id", IntegerType, nullable = false),
+      StructField("text", StringType, nullable = false)
+    )
+
+    val vidText = Seq[Row]()
+
+    for (id <- ids) {
+      val msg = df.filter("id = %d".format(id))
+        .select("msg")
+        .collect()
+        .map(r => r.getString(0))
+        .toList
+        .mkString(" ")
+
+      vidText :+ Row(id, msg)
+    }
+
+    val vidTextDf = spark.createDataFrame(
+      spark.sparkContext.parallelize(vidText),
+      StructType(vidTextSchema)
+    )
+
+    // TODO: Generate topics for vidTextDf
   }
 
-  def readFiles(path: String): Unit = {
-    val loop = new Breaks
-
-    loop.breakable {
-      for (file <- new File(path).listFiles.sortBy(_.getName)) {
-        parseFile(file.getPath)
-        loop.break()
-      }
-    }
+  def process(): Unit = {
+    println("Setting up VidSpark...")
+    initDataset()
   }
 }
 
@@ -40,12 +62,10 @@ object Main {
 
     println("Initialised!")
 
-    import spark.implicits._
-
-    new ReadSRT(spark)
-      .readFiles("/home/mahen/ScalaProjects/vidspark/src/main/data/alv_srt")
+    new SetUpVidSpark(spark, "data/alv.csv")
+      .process()
 
     println("Closing spark...")
-    spark.close()
+    spark.stop()
   }
 }
