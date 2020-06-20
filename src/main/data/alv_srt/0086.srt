@@ -1,0 +1,6916 @@
+1
+00:00:00,000 --> 00:00:05,880
+three men and
+
+2
+00:00:12,830 --> 00:00:14,110
+the more
+
+3
+00:00:14,120 --> 00:00:17,570
+it's just
+
+4
+00:00:17,610 --> 00:00:18,730
+they all
+
+5
+00:00:21,030 --> 00:00:27,890
+we're not
+
+6
+00:00:28,170 --> 00:00:30,270
+this is a
+
+7
+00:00:35,450 --> 00:00:38,300
+so the right
+
+8
+00:00:38,300 --> 00:00:44,130
+that means but it
+
+9
+00:00:44,150 --> 00:00:45,180
+so much
+
+10
+00:00:45,920 --> 00:00:47,970
+in fact
+
+11
+00:00:53,180 --> 00:00:56,340
+twenty one
+
+12
+00:01:01,480 --> 00:01:03,630
+so much
+
+13
+00:01:03,650 --> 00:01:06,640
+no problem
+
+14
+00:01:06,900 --> 00:01:08,580
+let's talk
+
+15
+00:01:10,850 --> 00:01:16,840
+but the company and later
+
+16
+00:01:23,550 --> 00:01:25,090
+that's why i think they
+
+17
+00:01:29,680 --> 00:01:36,640
+is just the same
+
+18
+00:01:37,810 --> 00:01:39,960
+you want
+
+19
+00:01:40,010 --> 00:01:43,330
+so each
+
+20
+00:01:43,350 --> 00:01:48,160
+which like
+
+21
+00:02:12,820 --> 00:02:14,360
+so when
+
+22
+00:02:22,970 --> 00:02:26,040
+the above
+
+23
+00:02:26,050 --> 00:02:29,050
+but was
+
+24
+00:02:34,400 --> 00:02:38,040
+on the other hand
+
+25
+00:02:39,390 --> 00:02:40,870
+the model
+
+26
+00:02:40,880 --> 00:02:43,510
+if can
+
+27
+00:02:46,400 --> 00:02:47,150
+the model
+
+28
+00:02:48,850 --> 00:02:52,720
+now that you know the one
+
+29
+00:03:03,070 --> 00:03:05,820
+the most
+
+30
+00:03:32,620 --> 00:03:35,580
+we can then
+
+31
+00:03:38,620 --> 00:03:43,180
+can you
+
+32
+00:03:47,330 --> 00:03:48,700
+just like
+
+33
+00:03:51,490 --> 00:03:53,100
+but this is the
+
+34
+00:04:01,080 --> 00:04:08,370
+so one are way or to way
+
+35
+00:04:08,640 --> 00:04:12,300
+my picture
+
+36
+00:04:12,330 --> 00:04:15,640
+the first of may one
+
+37
+00:04:18,030 --> 00:04:18,570
+so main
+
+38
+00:04:18,570 --> 00:04:23,330
+after the image of the last
+
+39
+00:04:24,370 --> 00:04:27,990
+and this morning
+
+40
+00:04:28,050 --> 00:04:31,570
+and i would
+
+41
+00:04:31,600 --> 00:04:33,780
+numbers we can use the
+
+42
+00:04:35,580 --> 00:04:36,550
+for the first time
+
+43
+00:04:40,720 --> 00:04:42,390
+somebody somewhere
+
+44
+00:04:42,390 --> 00:04:45,700
+one hundred and
+
+45
+00:04:46,010 --> 00:04:50,120
+hi because things
+
+46
+00:04:50,120 --> 00:04:51,470
+just like
+
+47
+00:04:51,470 --> 00:04:55,600
+so you are going to be talking about two many things
+
+48
+00:04:56,200 --> 00:05:00,560
+here in part three i'm going to be talking about
+
+49
+00:05:00,600 --> 00:05:06,120
+document retrieval so we're going to be trying to learn
+
+50
+00:05:06,150 --> 00:05:08,010
+hidden representations
+
+51
+00:05:08,020 --> 00:05:10,710
+of text
+
+52
+00:05:10,730 --> 00:05:17,560
+from the documents and from queries to try and capture the semantics
+
+53
+00:05:17,610 --> 00:05:22,050
+of these documents and queries to try and retrieve
+
+54
+00:05:22,070 --> 00:05:27,380
+good good documents given a query so
+
+55
+00:05:27,400 --> 00:05:31,720
+that's our goal we're going to try and use neural networks that and we can
+
+56
+00:05:31,730 --> 00:05:33,510
+compare it to
+
+57
+00:05:33,520 --> 00:05:35,370
+several baselines now
+
+58
+00:05:35,380 --> 00:05:37,660
+we can train
+
+59
+00:05:37,680 --> 00:05:39,820
+there is no networks
+
+60
+00:05:39,840 --> 00:05:46,460
+in learning to rank kind of setting so the supervised setting a lot of methods
+
+61
+00:05:46,490 --> 00:05:50,480
+have been published in nature about this many of them actually use
+
+62
+00:05:50,500 --> 00:05:54,340
+hand coded features like they take
+
+63
+00:05:56,020 --> 00:06:00,130
+features about the title and the body and the URL
+
+64
+00:06:00,140 --> 00:06:05,520
+and things like this and then they train like in SVM or perceptron but here
+
+65
+00:06:05,520 --> 00:06:10,590
+we just we just cannot take words and we're going to try and learn representations
+
+66
+00:06:10,640 --> 00:06:16,610
+words so in that sense it looks more like actually latent semantic indexing and other
+
+67
+00:06:16,610 --> 00:06:21,550
+approaches like that he said there typically unsupervised
+
+68
+00:06:21,570 --> 00:06:24,440
+although there are some
+
+69
+00:06:24,460 --> 00:06:28,470
+some of those approaches try and labels as well
+
+70
+00:06:28,490 --> 00:06:31,550
+so just going to look at some of the
+
+71
+00:06:31,560 --> 00:06:38,960
+simple baselines for retrieval first so we can use a bag of words representation
+
+72
+00:06:38,980 --> 00:06:43,780
+of the document so you just take the counts of of all the words in
+
+73
+00:06:43,780 --> 00:06:46,110
+the dictionary two vols vector
+
+74
+00:06:46,130 --> 00:06:50,570
+so length of the dictionary need to normalise it and then you can do something
+
+75
+00:06:50,570 --> 00:06:56,010
+really important just take the dot product of those vectors and take the cosine similarity
+
+76
+00:06:56,010 --> 00:06:58,750
+is a normalized in the right way
+
+77
+00:06:58,760 --> 00:07:00,770
+and and just take that
+
+78
+00:07:00,780 --> 00:07:02,680
+feel school so
+
+79
+00:07:02,700 --> 00:07:05,050
+so the query and the document
+
+80
+00:07:05,070 --> 00:07:08,970
+the dot product they should be large value and when
+
+81
+00:07:08,990 --> 00:07:14,030
+when that document should be retrieved by the query now this has the problem already
+
+82
+00:07:14,270 --> 00:07:17,560
+that doesn't deal with synonyms
+
+83
+00:07:17,580 --> 00:07:20,240
+so if
+
+84
+00:07:20,320 --> 00:07:24,150
+the to the query document have words
+
+85
+00:07:24,160 --> 00:07:29,240
+which are semantically similar but not the they're not actually the same words you might
+
+86
+00:07:29,240 --> 00:07:32,140
+even get a score of zero in this
+
+87
+00:07:32,150 --> 00:07:37,610
+dot product or low score actually any machine learning at all this
+
+88
+00:07:38,680 --> 00:07:40,840
+OK then you've got approaches
+
+89
+00:07:42,070 --> 00:07:43,350
+like LSI
+
+90
+00:07:43,370 --> 00:07:48,350
+and there's lots of other approaches like that as well and what they do
+
+91
+00:07:49,810 --> 00:07:51,720
+take this
+
+92
+00:07:51,760 --> 00:07:56,870
+bag of words vector and they learn a linear map typically
+
+93
+00:07:56,880 --> 00:08:03,480
+into a low dimensional latent concept space or you could you know concerning embedding space
+
+94
+00:08:04,850 --> 00:08:08,910
+you want to do that for the query and the document and then take the
+
+95
+00:08:08,910 --> 00:08:10,490
+dot product in that space
+
+96
+00:08:10,510 --> 00:08:12,590
+and and say that's how
+
+97
+00:08:12,600 --> 00:08:14,810
+how well matchmaker in document
+
+98
+00:08:15,010 --> 00:08:19,800
+and that can capture synonyms because two
+
+99
+00:08:19,850 --> 00:08:24,040
+was which is meant to be similar might trigger the same features in your in
+
+100
+00:08:24,040 --> 00:08:27,830
+your embeddings basically flat
+
+101
+00:08:27,850 --> 00:08:36,100
+but standard cyclist that's that's unsupervised learning which might not be useful for you go
+
+102
+00:08:36,110 --> 00:08:39,680
+so i'm going to look at some supervised models
+
+103
+00:08:40,850 --> 00:08:41,670
+also do
+
+104
+00:08:41,680 --> 00:08:45,030
+the that same kind of thing first and then we can see
+
+105
+00:08:45,050 --> 00:08:50,040
+what the problems are with them and how we turn them into neural networks to
+
+106
+00:08:50,970 --> 00:08:53,050
+try fix some of these problems
+
+107
+00:08:53,070 --> 00:08:55,260
+so we can look at
+
+108
+00:08:55,280 --> 00:08:58,220
+models like polynomial models
+
+109
+00:08:58,240 --> 00:09:00,450
+on on the original
+
+110
+00:09:00,460 --> 00:09:04,760
+the going to be polynomial features in the original bag of words so
+
+111
+00:09:04,770 --> 00:09:07,630
+we can have a linear model here
+
+112
+00:09:07,760 --> 00:09:12,940
+and as you can see is linear model takes the query and the document in
+
+113
+00:09:12,940 --> 00:09:14,540
+the joint feature space
+
+114
+00:09:14,560 --> 00:09:17,540
+and it's going to take a degree k
+
+115
+00:09:17,550 --> 00:09:23,400
+polynomial terms between the words from the query and document to in making new feature
+
+116
+00:09:23,400 --> 00:09:28,940
+space of these during the degree k terms and then learn a weight vector w
+
+117
+00:09:29,240 --> 00:09:30,800
+that this going to be
+
+118
+00:09:30,850 --> 00:09:33,580
+the degree of match between the query and document
+
+119
+00:09:33,590 --> 00:09:35,960
+so i'm going to look at two different kinds of models
+
+120
+00:09:36,240 --> 00:09:41,120
+the degree to kind of model here which is just going to take for the
+
+121
+00:09:41,120 --> 00:09:44,240
+i th word in every in the query
+
+122
+00:09:44,340 --> 00:09:48,160
+for every isolating the crew and every chase word in the document you've got a
+
+123
+00:09:48,160 --> 00:09:53,130
+weight w i j OK so it's going to take all pairs of words so
+
+124
+00:09:53,130 --> 00:10:00,030
+you can see how this is going to learn things about synonyms so for example
+
+125
+00:10:00,030 --> 00:10:02,360
+if i had a query here
+
+126
+00:10:02,630 --> 00:10:08,800
+kids in that's in NYC that's an abbreviation of new york city and i have
+
+127
+00:10:08,800 --> 00:10:14,970
+a document cap veterinarian new words new york so that any words shared between the
+
+128
+00:10:14,970 --> 00:10:21,080
+query and document here but with the model like the one i just described
+
+129
+00:10:21,830 --> 00:10:26,010
+so written in matrix form as q tw d
+
+130
+00:10:26,020 --> 00:10:31,190
+you can you can learn when
+
+131
+00:10:31,200 --> 00:10:33,920
+kitten and cat should trigger
+
+132
+00:10:35,030 --> 00:10:41,240
+high school for retrieval so in that case the part of the weight matrix w
+
+133
+00:10:41,240 --> 00:10:44,000
+i j where i is the index of kitten and j is the index of
+
+134
+00:10:44,000 --> 00:10:47,900
+cat should be some positive value
+
+135
+00:10:47,910 --> 00:10:54,100
+he has to learn that also going to look at degree three models where i'm
+
+136
+00:10:54,100 --> 00:10:55,060
+going to take
+
+137
+00:10:56,660 --> 00:10:59,870
+of words the case i'm going to take one word
+
+138
+00:10:59,880 --> 00:11:01,800
+in the query the i th word
+
+139
+00:11:01,810 --> 00:11:05,900
+and two words from the document the jason case
+
+140
+00:11:05,910 --> 00:11:07,410
+and i'm going to have
+
+141
+00:11:10,120 --> 00:11:14,980
+one parameter that i'm going to learn w i j k for every triple
+
+142
+00:11:14,990 --> 00:11:17,920
+OK plus i can add all the second order terms as well
+
+143
+00:11:19,030 --> 00:11:20,670
+now this thing
+
+144
+00:11:20,690 --> 00:11:22,480
+can capture even more
+
+145
+00:11:22,500 --> 00:11:29,310
+kinds of relationship between key query and document for example here is another example down
+
+146
+00:11:29,310 --> 00:11:33,120
+here at the bottom of the slide so it agreed to model could capture saint
+
+147
+00:11:33,120 --> 00:11:37,010
+even detect this upcoming season patterns from
+
+148
+00:11:39,210 --> 00:11:42,840
+the things that you measuring reliably
+
+149
+00:11:42,840 --> 00:11:50,780
+and whether you can implant these many problems with with some medication properly and chronically
+
+150
+00:11:50,800 --> 00:11:52,450
+there are some
+
+151
+00:11:52,470 --> 00:11:58,260
+some nerve cov electrodes so basically you have the nerve then this is the electrode
+
+152
+00:11:58,270 --> 00:12:02,950
+going around it that can squeeze so to say in
+
+153
+00:12:02,970 --> 00:12:04,280
+and so you could
+
+154
+00:12:04,310 --> 00:12:15,610
+basically also use detected in non invasive the detected signal to systematically squeeze such nose
+
+155
+00:12:15,800 --> 00:12:20,290
+in order to prevent an epileptic seizure
+
+156
+00:12:20,340 --> 00:12:25,830
+so this is a very interesting and very important
+
+157
+00:12:25,850 --> 00:12:31,100
+application and there's lots of epilepsy patients around
+
+158
+00:12:33,630 --> 00:12:36,290
+need our help
+
+159
+00:12:37,890 --> 00:12:41,620
+i'm saying that because the
+
+160
+00:12:41,640 --> 00:12:46,540
+it's it's good to be it became highly
+
+161
+00:12:46,540 --> 00:12:53,360
+complicated data analysis problems to define to predict upcoming seizures has been work for for
+
+162
+00:12:53,360 --> 00:12:58,650
+twenty or thirty years from from lots of people and i think a few people
+
+163
+00:12:58,650 --> 00:13:04,170
+have started to use the modern machine learning techniques that
+
+164
+00:13:04,200 --> 00:13:11,550
+so another thing which is maybe more obvious is that you take these implanted electrodes
+
+165
+00:13:11,580 --> 00:13:13,360
+and couple with some
+
+166
+00:13:14,610 --> 00:13:22,330
+and then you you just directly using a decoding algorithm two
+
+167
+00:13:22,330 --> 00:13:25,930
+control robot arm and you've seen that done by
+
+168
+00:13:26,150 --> 00:13:31,620
+in the video of any schwartz and also mechanically this is has done this and
+
+169
+00:13:31,620 --> 00:13:37,220
+the question is what how good this can be done for humans and how stable
+
+170
+00:13:37,220 --> 00:13:38,140
+this is
+
+171
+00:13:38,160 --> 00:13:45,000
+and can we make this very small devices how many electrodes that we actually need
+
+172
+00:13:46,950 --> 00:13:50,570
+how many degrees of freedom can we actually command
+
+173
+00:13:50,600 --> 00:13:57,760
+so these are many many questions and it takes a lot of research to actually
+
+174
+00:13:57,760 --> 00:14:03,470
+get there so this is future visions
+
+175
+00:14:10,830 --> 00:14:15,950
+see source about half now so just to wrap up the first
+
+176
+00:14:19,740 --> 00:14:23,810
+with an overview of of BCI
+
+177
+00:14:23,830 --> 00:14:25,900
+technology from
+
+178
+00:14:25,930 --> 00:14:27,400
+many different labs
+
+179
+00:14:27,420 --> 00:14:32,190
+i think it's it's fair to say
+
+180
+00:14:32,220 --> 00:14:34,830
+that that you that to say that
+
+181
+00:14:34,840 --> 00:14:38,770
+BCI is something very interdisciplinary
+
+182
+00:14:38,780 --> 00:14:43,030
+so in fact if you want to build peace have have little BCI lab in
+
+183
+00:14:43,680 --> 00:14:49,720
+home university i think it makes a lot of sense to two couple together the
+
+184
+00:14:49,720 --> 00:14:52,460
+medical department maybe
+
+185
+00:14:54,300 --> 00:14:59,770
+and the machine learning department signal processing department even it would be nice to have
+
+186
+00:14:59,810 --> 00:15:01,010
+to do something
+
+187
+00:15:01,030 --> 00:15:03,680
+sensor development
+
+188
+00:15:05,140 --> 00:15:07,600
+so but so what what is the
+
+189
+00:15:08,080 --> 00:15:12,030
+the task in this endeavour the first of all you have to think about some
+
+190
+00:15:12,030 --> 00:15:14,040
+neurophysiological paradigm
+
+191
+00:15:14,100 --> 00:15:20,650
+which reflects the brain function that you want to measure for example imagination of your
+
+192
+00:15:20,650 --> 00:15:22,790
+right hand will make you
+
+193
+00:15:22,810 --> 00:15:27,570
+left malta hemispheric motorcortex light up
+
+194
+00:15:27,590 --> 00:15:30,220
+then you have to think about acquisition
+
+195
+00:15:30,240 --> 00:15:36,590
+this could be e but it could be also henri or invasive or whatever
+
+196
+00:15:36,660 --> 00:15:40,760
+so this
+
+197
+00:15:40,780 --> 00:15:44,920
+this part you need a physiologist winner physiologist
+
+198
+00:15:47,590 --> 00:15:52,470
+then this is all part so we need to think about some robust preprocessing
+
+199
+00:15:52,490 --> 00:15:57,840
+about good robust classification techniques outlier detection
+
+200
+00:15:57,860 --> 00:16:00,360
+and we need to
+
+201
+00:16:00,890 --> 00:16:02,670
+i think about
+
+202
+00:16:02,670 --> 00:16:05,150
+the only thing that really requires
+
+203
+00:16:05,200 --> 00:16:08,250
+see that this integral exists
+
+204
+00:16:08,300 --> 00:16:11,280
+the integral over x may not even exist
+
+205
+00:16:11,300 --> 00:16:16,070
+it doesn't it doesn't have to make any sense
+
+206
+00:16:17,730 --> 00:16:21,390
+the key idea how we can actually performing inference in this
+
+207
+00:16:21,430 --> 00:16:25,910
+is well we avoid computing those for fixing was directly
+
+208
+00:16:25,970 --> 00:16:29,630
+but instead we only evaluate inner products
+
+209
+00:16:29,670 --> 00:16:32,120
+why this kernel function here
+
+210
+00:16:32,130 --> 00:16:36,940
+which defines everything in terms of inner products
+
+211
+00:16:39,160 --> 00:16:42,140
+and as long as we can write algorithms
+
+212
+00:16:42,160 --> 00:16:43,440
+in such a way
+
+213
+00:16:43,450 --> 00:16:47,170
+but we never need the FA x y directly
+
+214
+00:16:47,220 --> 00:16:48,760
+we can
+
+215
+00:16:48,820 --> 00:16:50,260
+quite immediately
+
+216
+00:16:50,270 --> 00:16:55,780
+get an algorithm which can work in arbitrary space blob tree twice
+
+217
+00:16:55,800 --> 00:16:57,810
+before the break somebody asked me
+
+218
+00:16:57,830 --> 00:16:59,730
+well in the binomial model
+
+219
+00:16:59,730 --> 00:17:00,910
+we have those
+
+220
+00:17:00,910 --> 00:17:05,120
+it's in one minus six terms
+
+221
+00:17:05,400 --> 00:17:10,450
+we had some far
+
+222
+00:17:10,450 --> 00:17:17,190
+and i got ask the question so well actually in those parameters to model is
+
+223
+00:17:17,190 --> 00:17:18,790
+unspecified because
+
+224
+00:17:18,820 --> 00:17:22,980
+i have a little bit of freedom if i have to normalization two
+
+225
+00:17:23,030 --> 00:17:24,500
+well play around with it
+
+226
+00:17:24,730 --> 00:17:26,290
+well that's true
+
+227
+00:17:27,840 --> 00:17:30,610
+if i just talk about in products
+
+228
+00:17:30,650 --> 00:17:33,760
+that initial degree of freedom goes away
+
+229
+00:17:33,810 --> 00:17:37,670
+that can just work in terms of inner products between fall fix
+
+230
+00:17:37,670 --> 00:17:40,320
+and for the next prime
+
+231
+00:17:40,340 --> 00:17:44,000
+which then just happens to be x x prime
+
+232
+00:17:45,530 --> 00:17:48,360
+k one one x
+
+233
+00:17:48,370 --> 00:17:51,730
+on one minus next prime
+
+234
+00:17:52,820 --> 00:17:54,290
+should be
+
+235
+00:17:54,340 --> 00:17:55,410
+two x
+
+236
+00:17:59,640 --> 00:18:03,290
+x one x prime one
+
+237
+00:18:03,440 --> 00:18:08,960
+and now this expression here doesn't suffer any more
+
+238
+00:18:09,000 --> 00:18:17,730
+from wherever this subspace came from
+
+239
+00:18:17,740 --> 00:18:22,990
+now not just as before we had the maximum posterior estimation problems
+
+240
+00:18:23,010 --> 00:18:24,830
+well densities
+
+241
+00:18:24,920 --> 00:18:28,180
+we now have one for conditional densities
+
+242
+00:18:28,230 --> 00:18:35,460
+the the difference is that now wherever we had forth ics before we now have
+
+243
+00:18:35,460 --> 00:18:39,390
+five x and y
+
+244
+00:18:39,410 --> 00:18:43,040
+the good thing is all the nice properties of the above problem
+
+245
+00:18:43,080 --> 00:18:44,320
+just carry through
+
+246
+00:18:44,330 --> 00:18:46,760
+the one below
+
+247
+00:18:46,810 --> 00:18:48,650
+it's strictly convex
+
+248
+00:18:48,680 --> 00:18:50,830
+and theta
+
+249
+00:18:51,520 --> 00:18:55,950
+what direct solution might be impossible if we cannot compute this directly
+
+250
+00:18:55,960 --> 00:19:00,730
+we can still solve it by just expanding state in terms of those for fixing
+
+251
+00:19:02,900 --> 00:19:05,750
+if this function g if they given x is nice
+
+252
+00:19:05,810 --> 00:19:12,160
+then the optimal solution will actually line the span of a finite number of terms
+
+253
+00:19:12,200 --> 00:19:15,050
+with the so-called representer theorem
+
+254
+00:19:15,240 --> 00:19:17,450
+this only holds
+
+255
+00:19:17,460 --> 00:19:21,060
+if the main y is finite
+
+256
+00:19:21,090 --> 00:19:23,880
+otherwise well you might get an infinite number of terms and then you need to
+
+257
+00:19:23,880 --> 00:19:26,220
+approximate anyway
+
+258
+00:19:27,650 --> 00:19:29,870
+the nice thing is well we can just put
+
+259
+00:19:31,070 --> 00:19:32,550
+linear combinations
+
+260
+00:19:32,560 --> 00:19:34,730
+formatting expansion of data
+
+261
+00:19:34,740 --> 00:19:36,130
+into this
+
+262
+00:19:36,140 --> 00:19:37,590
+functional below
+
+263
+00:19:37,620 --> 00:19:41,670
+and we optimize over those expansion coefficients
+
+264
+00:19:41,680 --> 00:19:48,370
+so what has happened is we've turned a optimisation problem that potentially infinite dimensional space
+
+265
+00:19:48,380 --> 00:19:51,750
+in the one that in the finite dimensional space we can now
+
+266
+00:19:51,810 --> 00:19:57,120
+optimize of individual coefficients
+
+267
+00:19:57,130 --> 00:20:01,050
+and then it all boils down to what this function g looks like what these
+
+268
+00:20:01,050 --> 00:20:02,620
+terms look like
+
+269
+00:20:02,670 --> 00:20:09,460
+i would just optimize away
+
+270
+00:20:09,480 --> 00:20:11,960
+so now what's happening is
+
+271
+00:20:11,970 --> 00:20:15,980
+if this trend feature map so we take x and y pass
+
+272
+00:20:16,220 --> 00:20:18,730
+we mapped to fall fixed and why
+
+273
+00:20:18,740 --> 00:20:20,790
+take the inner product with data
+
+274
+00:20:20,800 --> 00:20:23,930
+the mapping into our
+
+275
+00:20:23,970 --> 00:20:28,090
+the problem is we need to really evaluate it for all wise for the normalisation
+
+276
+00:20:28,110 --> 00:20:30,260
+but that's really the only
+
+277
+00:20:30,290 --> 00:20:33,220
+small technical issue
+
+278
+00:20:33,540 --> 00:20:35,260
+so the
+
+279
+00:20:35,310 --> 00:20:38,020
+the representer theorem is the following
+
+280
+00:20:38,040 --> 00:20:41,130
+four minimizes the objective function
+
+281
+00:20:41,130 --> 00:20:44,420
+so this is
+
+282
+00:21:00,480 --> 00:21:02,890
+let's just one man
+
+283
+00:21:02,900 --> 00:21:06,510
+the in the
+
+284
+00:21:08,470 --> 00:21:16,010
+in late
+
+285
+00:21:19,300 --> 00:21:22,780
+i think know
+
+286
+00:21:27,230 --> 00:21:31,120
+it's like no one
+
+287
+00:21:31,190 --> 00:21:38,150
+we need to do
+
+288
+00:21:38,280 --> 00:21:40,520
+and they do
+
+289
+00:21:45,480 --> 00:21:46,880
+he was
+
+290
+00:21:52,370 --> 00:21:56,280
+so this is the
+
+291
+00:22:16,890 --> 00:22:18,900
+the problem is
+
+292
+00:22:30,380 --> 00:22:33,250
+you know
+
+293
+00:22:46,410 --> 00:22:55,570
+now assume the
+
+294
+00:23:29,810 --> 00:23:33,350
+what need to know
+
+295
+00:23:39,700 --> 00:23:42,870
+the two
+
+296
+00:23:45,440 --> 00:23:47,280
+and in
+
+297
+00:23:47,300 --> 00:23:53,680
+you know it's true
+
+298
+00:24:00,630 --> 00:24:06,790
+the more
+
+299
+00:24:19,470 --> 00:24:21,940
+see this
+
+300
+00:24:34,220 --> 00:24:36,830
+we were
+
+301
+00:24:37,000 --> 00:24:39,860
+like this
+
+302
+00:24:40,010 --> 00:24:42,190
+six models
+
+303
+00:24:42,200 --> 00:24:45,750
+the main
+
+304
+00:25:29,760 --> 00:25:32,560
+the only thing
+
+305
+00:25:37,580 --> 00:25:52,460
+i think that
+
+306
+00:25:52,480 --> 00:25:57,660
+the problem these things only
+
+307
+00:26:09,620 --> 00:26:12,000
+so it is not
+
+308
+00:26:12,020 --> 00:26:19,600
+the models
+
+309
+00:26:26,660 --> 00:26:33,690
+in know
+
+310
+00:26:52,230 --> 00:26:55,600
+that is
+
+311
+00:27:02,090 --> 00:27:06,780
+it's not works
+
+312
+00:27:06,940 --> 00:27:09,470
+you know
+
+313
+00:27:25,960 --> 00:27:29,580
+this scene CA
+
+314
+00:27:34,280 --> 00:27:37,190
+so the whole
+
+315
+00:27:37,240 --> 00:27:39,960
+it was probably
+
+316
+00:27:41,030 --> 00:27:42,020
+is it
+
+317
+00:27:48,330 --> 00:27:50,480
+all o
+
+318
+00:28:01,260 --> 00:28:04,490
+it is
+
+319
+00:28:04,680 --> 00:28:10,180
+thank you
+
+320
+00:28:25,410 --> 00:28:27,510
+do you want to see
+
+321
+00:28:38,730 --> 00:28:45,840
+OK so this
+
+322
+00:28:45,840 --> 00:28:49,840
+o thing to be
+
+323
+00:28:54,720 --> 00:28:58,690
+o to one
+
+324
+00:28:58,750 --> 00:29:03,070
+that is what we do is
+
+325
+00:29:04,190 --> 00:29:06,440
+the reason
+
+326
+00:29:07,240 --> 00:29:09,690
+one the one variable
+
+327
+00:29:09,720 --> 00:29:14,590
+on the wall the probability of something happening
+
+328
+00:29:14,670 --> 00:29:18,220
+so we have to use small
+
+329
+00:29:18,240 --> 00:29:22,490
+of these about movies use
+
+330
+00:29:22,510 --> 00:29:26,900
+so this is something
+
+331
+00:29:26,920 --> 00:29:31,130
+that was the
+
+332
+00:29:31,490 --> 00:29:36,570
+actually that's one of the examples of common a few slides so that's called
+
+333
+00:29:36,630 --> 00:29:42,030
+chance constrained you want to put that in the limit on the probability that the
+
+334
+00:29:42,220 --> 00:29:45,530
+and constraints x is violated
+
+335
+00:29:45,550 --> 00:29:48,070
+and in general that can be very difficult except in
+
+336
+00:29:48,090 --> 00:29:50,650
+special cases depending on the density density
+
+337
+00:29:50,650 --> 00:29:52,670
+and concerns
+
+338
+00:29:52,720 --> 00:29:59,800
+those who actually see one practical examples very can be
+
+339
+00:29:59,800 --> 00:30:05,300
+so then so the next topic is called programming and continue this tomorrow
+
+340
+00:30:05,300 --> 00:30:08,420
+so called programming is a general
+
+341
+00:30:08,420 --> 00:30:09,720
+defined like this
+
+342
+00:30:09,970 --> 00:30:14,130
+it's the general format for convex optimisation has become very popular since
+
+343
+00:30:14,190 --> 00:30:17,030
+the early nineteen nineties
+
+344
+00:30:17,030 --> 00:30:19,050
+basically makes any
+
+345
+00:30:19,110 --> 00:30:23,050
+convex optimisation problem look like a linear programme so it just takes a linear objective
+
+346
+00:30:23,050 --> 00:30:26,490
+linear equality constraints inequalities
+
+347
+00:30:26,550 --> 00:30:30,840
+and the only difference is that replaces standard inequality between vectors
+
+348
+00:30:30,840 --> 00:30:33,610
+by generalized inequalities
+
+349
+00:30:33,630 --> 00:30:39,470
+and the generalized journalist inequality i mean that define concave convex concave
+
+350
+00:30:39,520 --> 00:30:43,110
+and this inequality means that h minus gx
+
+351
+00:30:43,140 --> 00:30:44,820
+lies in the concave
+
+352
+00:30:47,320 --> 00:30:49,520
+if i take for kedah
+
+353
+00:30:49,530 --> 00:30:51,520
+nonnegative orthant
+
+354
+00:30:51,520 --> 00:30:56,680
+then this is just another way of saying that the com the constraints hold componentwise
+
+355
+00:30:56,770 --> 00:31:01,320
+because componentwise h minus gx lies in the nonnegative orthant
+
+356
+00:31:01,380 --> 00:31:07,150
+but if you replace the nonnegative orthant by the convex conjugate interesting
+
+357
+00:31:07,850 --> 00:31:11,970
+convex optimisation problems that
+
+358
+00:31:12,020 --> 00:31:13,820
+extend your
+
+359
+00:31:13,840 --> 00:31:18,060
+so it's called called linear programming is popular the standard format because it makes the
+
+360
+00:31:18,060 --> 00:31:20,880
+general the problem look like an LP
+
+361
+00:31:20,890 --> 00:31:24,690
+and then it's important and also theory
+
+362
+00:31:24,710 --> 00:31:26,930
+we and algorithms because all
+
+363
+00:31:26,940 --> 00:31:30,210
+it turns out the duality theory for example is almost exactly the same as for
+
+364
+00:31:30,210 --> 00:31:31,770
+linear programming
+
+365
+00:31:31,840 --> 00:31:35,680
+and also the words for linear programming at least interior point methods are very similar
+
+366
+00:31:35,690 --> 00:31:38,050
+can be extended to this case
+
+367
+00:31:39,900 --> 00:31:41,820
+so it's convex sets
+
+368
+00:31:41,840 --> 00:31:43,360
+that's also called
+
+369
+00:31:43,380 --> 00:31:45,980
+so if you take an element in the car
+
+370
+00:31:46,030 --> 00:31:47,890
+and all nonnegative multiples
+
+371
+00:31:47,900 --> 00:31:50,980
+of the relevant article the entire half line
+
+372
+00:31:50,990 --> 00:31:53,220
+through the elements in common
+
+373
+00:31:53,230 --> 00:31:56,470
+so we see actually this is a very general form at the wheel
+
+374
+00:31:56,490 --> 00:32:03,100
+the interested in two specific cases or three if you include the nonnegative orthant
+
+375
+00:32:03,100 --> 00:32:06,140
+so the first one is the second order cone so this is a common that's
+
+376
+00:32:06,140 --> 00:32:08,430
+called the second order cone
+
+377
+00:32:08,470 --> 00:32:11,760
+so the second order cone is defined like this in general
+
+378
+00:32:11,880 --> 00:32:13,680
+so we have p
+
+379
+00:32:13,690 --> 00:32:15,800
+it's if it's a colonoscopy
+
+380
+00:32:15,810 --> 00:32:20,340
+then you look at the subject vector of the first the minus one entries
+
+381
+00:32:20,350 --> 00:32:24,680
+and then that vector y is in the icon of the euclidean norm of the
+
+382
+00:32:24,680 --> 00:32:29,300
+first p minus one and three is is less than the last three
+
+383
+00:32:29,310 --> 00:32:32,560
+so the second order cone in r three looks like this
+
+384
+00:32:32,590 --> 00:32:34,730
+so also the ice-cream cone
+
+385
+00:32:35,780 --> 00:32:43,710
+three of the vector three variable three vector y in the course if y three
+
+386
+00:32:43,710 --> 00:32:46,970
+is created than the euclidean norm of y one and i two
+
+387
+00:32:46,980 --> 00:32:48,980
+so for each y three
+
+388
+00:32:49,020 --> 00:32:51,380
+we have this
+
+389
+00:32:51,390 --> 00:32:55,110
+constraint defines a disk
+
+390
+00:32:55,140 --> 00:32:57,880
+of points this could reduce y three
+
+391
+00:32:57,890 --> 00:33:01,350
+and if you increase y three the radius of the disk increases that goes from
+
+392
+00:33:01,350 --> 00:33:03,050
+zero to infinity
+
+393
+00:33:03,050 --> 00:33:07,140
+so it's convex sets this example
+
+394
+00:33:07,140 --> 00:33:11,390
+it's easy to see it's convex it's also called because it includes the origin and
+
+395
+00:33:11,390 --> 00:33:13,550
+an older lines
+
+396
+00:33:13,600 --> 00:33:15,890
+so any point in court
+
+397
+00:33:20,480 --> 00:33:24,340
+the constraint function is not differentiable
+
+398
+00:33:28,480 --> 00:33:32,130
+that's the norm so this is also the graph of the norman white and r
+
+399
+00:33:32,840 --> 00:33:36,520
+so the norm is non differentiable at the origin
+
+400
+00:33:37,150 --> 00:33:41,770
+it's differentiable everywhere else but if the argument of the enormous zero then that's not
+
+401
+00:33:41,800 --> 00:33:44,520
+the french
+
+402
+00:33:44,530 --> 00:33:48,690
+so this is a second order cone programme and sort of the abstract of viewing
+
+403
+00:33:48,690 --> 00:33:52,600
+this as a program and say well o
+
+404
+00:33:52,600 --> 00:33:55,810
+look at linear inequalities with respect to this school
+
+405
+00:33:55,860 --> 00:33:58,850
+but the actual of means something that's very
+
+406
+00:33:59,280 --> 00:34:01,480
+state for the just means that
+
+407
+00:34:01,480 --> 00:34:04,310
+euclidean norm of a linear function of x
+
+408
+00:34:04,340 --> 00:34:08,130
+it's less than this clearly linear function of x
+
+409
+00:34:08,140 --> 00:34:11,140
+that's a second order cone constraints
+
+410
+00:34:11,140 --> 00:34:14,280
+so it means that
+
+411
+00:34:14,310 --> 00:34:18,850
+if you look at the geometrically that this
+
+412
+00:34:19,030 --> 00:34:23,880
+image of x and this linear mapping lies in the second article
+
+413
+00:34:23,880 --> 00:34:29,510
+at that appear in the different this time ensemble commonly found and we analyse the
+
+414
+00:34:29,510 --> 00:34:34,670
+degree of coverage and also the current european needs based on that we
+
+415
+00:34:34,680 --> 00:34:36,210
+we have selected the
+
+416
+00:34:36,230 --> 00:34:38,060
+standards that appear
+
+417
+00:34:40,150 --> 00:34:44,740
+but at the same time we need some kind of tributary taxonomies coming from the
+
+418
+00:34:44,740 --> 00:34:50,150
+different employment services so so in that case we have two
+
+419
+00:34:50,180 --> 00:34:56,710
+two two important tool for engineers some kind of taxonomies that were represented in oracle
+
+420
+00:34:56,710 --> 00:35:02,650
+databases or represented in HTML or represented in access
+
+421
+00:35:02,660 --> 00:35:05,210
+we integrated or
+
+422
+00:35:05,260 --> 00:35:09,740
+these taxonomies after building robinson after the
+
+423
+00:35:09,750 --> 00:35:12,380
+during the transformation from these
+
+424
+00:35:12,390 --> 00:35:15,100
+sources into into
+
+425
+00:35:15,120 --> 00:35:18,680
+our internet knowledge more than and one
+
+426
+00:35:18,700 --> 00:35:21,640
+we integrate the information from
+
+427
+00:35:21,650 --> 00:35:27,710
+the different sources some portions of the integrated model where specialized in other parts of
+
+428
+00:35:27,710 --> 00:35:32,020
+the model were extended and we also want those parts
+
+429
+00:35:33,090 --> 00:35:39,570
+that we didn't consider important for our final application so the what we did is
+
+430
+00:35:39,570 --> 00:35:41,320
+to generate the
+
+431
+00:35:41,340 --> 00:35:45,950
+the the ontology which reasoning because this is a the language
+
+432
+00:35:45,970 --> 00:35:47,310
+we we we need to
+
+433
+00:35:47,320 --> 00:35:51,850
+that in which we need to you the ontology for doing this the application
+
+434
+00:35:51,890 --> 00:35:53,960
+so for engineering
+
+435
+00:35:54,020 --> 00:35:55,420
+you can see that the wind
+
+436
+00:35:55,450 --> 00:35:59,110
+we started some kind of engineering we have
+
+437
+00:35:59,120 --> 00:36:03,510
+forty is that you can have some kind of XML information
+
+438
+00:36:03,530 --> 00:36:06,540
+like the ISO standard for
+
+439
+00:36:06,550 --> 00:36:12,150
+represented country called and you can also use for instance i despise that are facing
+
+440
+00:36:12,150 --> 00:36:17,780
+which the different values of spain are included so for that what we need to
+
+441
+00:36:17,780 --> 00:36:21,570
+do is to integrate and to create first ontology model
+
+442
+00:36:21,620 --> 00:36:25,640
+this is very very very simple so you we have the location we have country
+
+443
+00:36:25,640 --> 00:36:31,300
+and region which as of passive of location and we create a relation between country
+
+444
+00:36:32,120 --> 00:36:37,160
+and are you with the name of past so this allows us to transform all
+
+445
+00:36:37,170 --> 00:36:39,970
+the instances in the database into
+
+446
+00:36:40,030 --> 00:36:48,180
+RDF and instantiate all these instances are spain an of country and all this stuff
+
+447
+00:36:48,180 --> 00:36:53,950
+like instances of tree and that the and this is the RDF called genetic
+
+448
+00:36:54,150 --> 00:36:55,970
+so v
+
+449
+00:36:55,980 --> 00:36:59,700
+the next step is that you should go to analyse all the
+
+450
+00:36:59,710 --> 00:37:07,490
+ontology if other ontologies could be reused for your application i will not explain these
+
+451
+00:37:07,490 --> 00:37:11,660
+this process because we only ever use one time
+
+452
+00:37:11,660 --> 00:37:16,050
+one one ontology about of all time it is on the material you have you
+
+453
+00:37:16,050 --> 00:37:16,950
+have there
+
+454
+00:37:16,960 --> 00:37:22,210
+and i go to the concert twenty stations activity which is more important so this
+
+455
+00:37:23,390 --> 00:37:24,400
+from the
+
+456
+00:37:24,410 --> 00:37:31,100
+the use of non ontological resources we have all already selected and transformed some kind
+
+457
+00:37:31,100 --> 00:37:35,990
+of an ontological resources in a ball into ontologies we have also selected some
+
+458
+00:37:36,020 --> 00:37:42,090
+one ontology about time and on the the twenty station activity we should organise or
+
+459
+00:37:42,220 --> 00:37:47,990
+the sources that we plan that we should relate all this shows is that we
+
+460
+00:37:48,360 --> 00:37:52,030
+know the ontology is that we are going to use in our application
+
+461
+00:37:52,030 --> 00:37:57,240
+so in that case the representation ontology that we we are using these with me
+
+462
+00:37:57,240 --> 00:37:59,760
+we are also using in some kind of genius
+
+463
+00:37:59,780 --> 00:38:04,070
+or common ontologies like time geography
+
+464
+00:38:04,070 --> 00:38:06,710
+language ontologies
+
+465
+00:38:07,570 --> 00:38:13,130
+we are using domain ontologies like a of we need an ontology domain ontology like
+
+466
+00:38:13,130 --> 00:38:20,210
+economic activity occupation education as he is driving license compensation labour
+
+467
+00:38:20,220 --> 00:38:25,190
+competence so these ontologies has been built by means of the use of an ontological
+
+468
+00:38:27,240 --> 00:38:29,340
+the end what we have
+
+469
+00:38:29,380 --> 00:38:31,740
+or what we has been is the application
+
+470
+00:38:31,800 --> 00:38:36,530
+the in domain ontology just four percent did the job seeker and the you for
+
+471
+00:38:41,860 --> 00:38:42,820
+i want
+
+472
+00:38:42,820 --> 00:38:43,970
+in the same way
+
+473
+00:38:44,020 --> 00:38:50,690
+that we try to summarize the probability distributions which still we try to summarize the
+
+474
+00:38:50,690 --> 00:38:59,190
+samples so we might calculate the mean that's the average and the varience for example
+
+475
+00:38:59,210 --> 00:39:01,940
+and they will be that uses estimates of
+
+476
+00:39:01,980 --> 00:39:05,730
+what would happen if we going on forever so
+
+477
+00:39:05,780 --> 00:39:07,270
+so do that
+
+478
+00:39:07,340 --> 00:39:15,420
+we refer to these things parameters so we're trying to estimate the expectation and variance
+
+479
+00:39:16,320 --> 00:39:17,620
+some data
+
+480
+00:39:17,660 --> 00:39:20,830
+now when we were the summaries out
+
+481
+00:39:20,840 --> 00:39:22,690
+because what we're trying to do
+
+482
+00:39:22,710 --> 00:39:27,940
+we would like to know what the characteristics of the summaries so we did a
+
+483
+00:39:27,940 --> 00:39:29,170
+lot of trials
+
+484
+00:39:29,170 --> 00:39:32,760
+and we got a lot of numbers and work out an average what we want
+
+485
+00:39:32,780 --> 00:39:38,440
+to know is what the characters of the probabilistic characteristics of the average and in
+
+486
+00:39:38,440 --> 00:39:43,600
+particular we might ask the question if i take the sample of account its average
+
+487
+00:39:43,660 --> 00:39:48,460
+how fast going to be from the true value if i could have done
+
+488
+00:39:48,480 --> 00:39:53,920
+an infinite number of samples to any number of trials that would give me the
+
+489
+00:39:53,920 --> 00:39:58,430
+true long-run expectation that's what i try to find out about often
+
+490
+00:39:58,430 --> 00:40:01,930
+and what i would like to know is
+
+491
+00:40:01,930 --> 00:40:04,080
+well i can't do
+
+492
+00:40:04,540 --> 00:40:10,140
+an infinite number of trials going define number of trials so how far is the
+
+493
+00:40:10,140 --> 00:40:14,330
+mean from a finite number of trials from the mean for the infinite number of
+
+494
+00:40:15,570 --> 00:40:19,520
+and the way try to get that
+
+495
+00:40:19,540 --> 00:40:24,150
+is what's called the sampling distribution so
+
+496
+00:40:24,890 --> 00:40:31,680
+thank you all the observations the data is being individual random variables ifwe want to
+
+497
+00:40:31,680 --> 00:40:36,240
+make mean we have all the variables are defined by many random variables and got
+
+498
+00:40:36,240 --> 00:40:40,070
+and that will give us our approach so this is the function of various learning
+
+499
+00:40:40,070 --> 00:40:44,220
+components so it will have random behavior itself if we did the same thing again
+
+500
+00:40:44,220 --> 00:40:50,130
+in different simple we expect to get a different name where have is not exactly
+
+501
+00:40:50,130 --> 00:40:53,240
+the same meaning just a number very close to what
+
+502
+00:40:53,260 --> 00:40:54,920
+so so different samples will
+
+503
+00:40:54,920 --> 00:40:56,220
+it was different
+
+504
+00:40:56,240 --> 00:41:00,520
+i mean solar variation across different samples and that's
+
+505
+00:41:02,200 --> 00:41:06,970
+the variation across the different samples is called the sample distribution so that sort of
+
+506
+00:41:06,970 --> 00:41:11,160
+behavior why do want to know that will come back to that later
+
+507
+00:41:11,170 --> 00:41:16,650
+i've just included here because that's where is in in the book
+
+508
+00:41:20,680 --> 00:41:27,400
+so if open saying that what we try to to the statistician is so
+
+509
+00:41:27,400 --> 00:41:33,620
+data and work out things about the probabilistic model that's out there
+
+510
+00:41:33,640 --> 00:41:35,430
+this is called inference
+
+511
+00:41:35,450 --> 00:41:42,880
+and a more formal way of putting this down saying the probabilistic model depends on
+
+512
+00:41:42,890 --> 00:41:45,640
+various numbers
+
+513
+00:41:45,690 --> 00:41:52,130
+unknown parameters which in the frequencies will we would think of as constants so
+
+514
+00:41:52,180 --> 00:41:54,540
+that's what this thing here is
+
+515
+00:41:54,560 --> 00:42:02,380
+theta is just a vector of numbers is not variable is not the not random
+
+516
+00:42:02,400 --> 00:42:06,220
+we just don't know what they are so example of that might be
+
+517
+00:42:06,240 --> 00:42:09,260
+the long remained expectation
+
+518
+00:42:09,270 --> 00:42:13,440
+is not a random quantity is fixed by the book
+
+519
+00:42:13,460 --> 00:42:16,980
+we don't know what it is because in order to find out what is we
+
+520
+00:42:17,000 --> 00:42:20,670
+have to do an infinite number of trials and that we can't
+
+521
+00:42:23,170 --> 00:42:24,630
+we try to find out
+
+522
+00:42:24,630 --> 00:42:27,390
+about these numbers and these numbers relate to
+
+523
+00:42:27,400 --> 00:42:29,370
+properties of
+
+524
+00:42:29,380 --> 00:42:35,140
+the model that was thinking about and
+
+525
+00:42:36,880 --> 00:42:41,610
+we have two standard attacks on how do we find out what
+
+526
+00:42:41,660 --> 00:42:45,230
+how do we get an estimate of the quantity
+
+527
+00:42:45,260 --> 00:42:51,030
+because that's what i do but also want to estimate the parameters in the parameters
+
+528
+00:42:51,030 --> 00:42:52,500
+that back to
+
+529
+00:42:55,430 --> 00:42:56,560
+what we
+
+530
+00:42:56,570 --> 00:42:58,290
+i think about is this
+
+531
+00:42:58,320 --> 00:43:02,810
+we think of the probabilistic with probability model that we have also will if we
+
+532
+00:43:02,810 --> 00:43:04,160
+call f
+
+533
+00:43:04,180 --> 00:43:08,650
+and as these guys here t
+
+534
+00:43:08,660 --> 00:43:13,840
+if this was the a constituency what that means in terms of the probability of
+
+535
+00:43:13,840 --> 00:43:18,170
+getting the data that we actually saw so is some data and we might say
+
+536
+00:43:18,460 --> 00:43:23,360
+let's say we're playing about tossing a coin again
+
+537
+00:43:24,740 --> 00:43:28,340
+and i suppose we saw
+
+538
+00:43:28,340 --> 00:43:30,200
+with ten goals
+
+539
+00:43:30,230 --> 00:43:35,620
+and we saw six of those who had
+
+540
+00:43:35,620 --> 00:43:40,150
+so we get this we have knowledge of the world
+
+541
+00:43:40,170 --> 00:43:41,230
+there we are more
+
+542
+00:43:41,260 --> 00:43:44,950
+that is part of the
+
+543
+00:43:44,970 --> 00:43:47,070
+the query mine
+
+544
+00:43:47,960 --> 00:43:51,780
+so we have as part of our world
+
+545
+00:43:51,800 --> 00:43:54,660
+because they were able to audition world
+
+546
+00:43:54,680 --> 00:43:56,580
+make sense of the world
+
+547
+00:43:56,590 --> 00:43:59,600
+and operating intelligence
+
+548
+00:43:59,750 --> 00:44:03,420
+is that is that some of the crazy ideas said that after
+
+549
+00:44:05,610 --> 00:44:07,830
+well it may be
+
+550
+00:44:07,840 --> 00:44:10,870
+but interestingly too freely
+
+551
+00:44:11,210 --> 00:44:15,160
+developmental psychologists in last twenty years
+
+552
+00:44:15,160 --> 00:44:19,820
+i have been studying and something very similar to that
+
+553
+00:44:20,840 --> 00:44:24,620
+which is expectations about the real the world of words
+
+554
+00:44:24,630 --> 00:44:27,280
+apparently mis just
+
+555
+00:44:27,310 --> 00:44:29,820
+without ever having for example
+
+556
+00:44:30,200 --> 00:44:32,860
+object object
+
+557
+00:44:32,870 --> 00:44:34,110
+these are
+
+558
+00:44:34,710 --> 00:44:38,450
+goes on the edge of alleged faults
+
+559
+00:44:38,470 --> 00:44:41,140
+it appears that he
+
+560
+00:44:41,170 --> 00:44:45,310
+have expectations about the way the world a
+
+561
+00:44:45,320 --> 00:44:51,620
+even prior to any experience with the somehow that knowledge is built into the brain
+
+562
+00:44:51,670 --> 00:44:53,940
+is something very similar
+
+563
+00:44:56,330 --> 00:44:57,090
+so that
+
+564
+00:44:57,110 --> 00:44:59,580
+sorry which was presented
+
+565
+00:44:59,600 --> 00:45:02,360
+a couple of centuries
+
+566
+00:45:02,380 --> 00:45:07,710
+the question questions about this
+
+567
+00:45:07,730 --> 00:45:08,410
+all right
+
+568
+00:45:12,890 --> 00:45:14,860
+we began with this question
+
+569
+00:45:14,880 --> 00:45:20,840
+about ontology was really true in the world and what is the relationship between knowledge
+
+570
+00:45:20,860 --> 00:45:22,940
+and true
+
+571
+00:45:22,970 --> 00:45:25,380
+and what we've discovered
+
+572
+00:45:25,390 --> 00:45:28,140
+is that the relationship is problematic
+
+573
+00:45:28,210 --> 00:45:31,470
+that our knowledge of the world and what the world is really like
+
+574
+00:45:31,480 --> 00:45:33,670
+are not exactly the same
+
+575
+00:45:34,550 --> 00:45:41,100
+imagine that philosophers have been pursuing this question for a couple of thousand years
+
+576
+00:45:41,120 --> 00:45:45,240
+and they're not getting the answer
+
+577
+00:45:45,260 --> 00:45:47,800
+and it's been really frustrating
+
+578
+00:45:47,840 --> 00:45:51,230
+and about a hundred years ago
+
+579
+00:45:51,260 --> 00:45:53,330
+all this time he two that
+
+580
+00:45:54,650 --> 00:45:58,560
+were desperate to find an answer not
+
+581
+00:45:58,610 --> 00:46:00,950
+can you have certain knowledge
+
+582
+00:46:00,970 --> 00:46:02,060
+or is this
+
+583
+00:46:02,060 --> 00:46:04,150
+just chasing our tails is
+
+584
+00:46:04,160 --> 00:46:05,880
+this is a fool's errand
+
+585
+00:46:05,900 --> 00:46:08,700
+she tried to lock down
+
+586
+00:46:08,730 --> 00:46:13,990
+our knowledge that we can confident that our knowledge is what is true
+
+587
+00:46:14,010 --> 00:46:17,500
+and came to a head was
+
+588
+00:46:20,470 --> 00:46:24,260
+around nineteen twenty
+
+589
+00:46:24,270 --> 00:46:27,750
+we are the
+
+590
+00:46:29,320 --> 00:46:34,110
+school be known as logical positivism like all this
+
+591
+00:46:34,130 --> 00:46:36,390
+the loss these last ten
+
+592
+00:46:36,410 --> 00:46:39,050
+to gain certain knowledge
+
+593
+00:46:39,600 --> 00:46:43,350
+the group of philosophers first many of the inner circle and they were
+
+594
+00:46:43,360 --> 00:46:45,550
+they had this idea that
+
+595
+00:46:45,560 --> 00:46:49,730
+OK lot knowledge is uncertain but there are some things that we can say
+
+596
+00:46:49,750 --> 00:46:51,510
+for example
+
+597
+00:46:52,000 --> 00:46:54,050
+several propositions i
+
+598
+00:46:54,100 --> 00:46:56,690
+table hard
+
+599
+00:46:56,750 --> 00:46:59,050
+like right
+
+600
+00:47:00,850 --> 00:47:03,200
+tommy troops
+
+601
+00:47:03,220 --> 00:47:06,910
+they say you know as the
+
+602
+00:47:06,930 --> 00:47:11,050
+that we can and maybe a little bit like data we can build on those
+
+603
+00:47:15,470 --> 00:47:20,620
+and so on any to do this for a few years
+
+604
+00:47:20,620 --> 00:47:23,210
+the last was very poor
+
+605
+00:47:27,310 --> 00:47:29,660
+was that we didn't stop
+
+606
+00:47:29,670 --> 00:47:32,860
+who was from austria who was also a lecturer at
+
+607
+00:47:32,860 --> 00:47:38,230
+cambridge university so he was one of the original proponents logical positivism we can you
+
+608
+00:47:38,240 --> 00:47:41,330
+know certain things for sure
+
+609
+00:47:41,350 --> 00:47:43,080
+table hard
+
+610
+00:47:43,090 --> 00:47:48,210
+like bread
+
+611
+00:47:48,240 --> 00:47:50,170
+a few years went by
+
+612
+00:47:54,030 --> 00:47:57,490
+completely changed as well
+
+613
+00:47:57,500 --> 00:48:01,400
+and maybe it's hard to use different is
+
+614
+00:48:01,400 --> 00:48:02,840
+too hard
+
+615
+00:48:02,860 --> 00:48:04,670
+and like right
+
+616
+00:48:04,690 --> 00:48:07,230
+well take this very far
+
+617
+00:48:07,240 --> 00:48:12,470
+into the way human beings understand and talk about the world
+
+618
+00:48:12,590 --> 00:48:14,260
+two things
+
+619
+00:48:14,280 --> 00:48:18,060
+when we communicate when we think
+
+620
+00:48:18,070 --> 00:48:21,320
+we move into directions that are very far away
+
+621
+00:48:21,330 --> 00:48:22,440
+from those
+
+622
+00:48:22,530 --> 00:48:24,490
+tom treats
+
+623
+00:48:24,510 --> 00:48:29,610
+so there was a certain kind of
+
+624
+00:48:30,030 --> 00:48:36,480
+are sure was hard all this idea of talk that
+
+625
+00:48:36,490 --> 00:48:38,630
+it was not true
+
+626
+00:48:38,640 --> 00:48:40,420
+that was not
+
+627
+00:48:40,630 --> 00:48:42,600
+they really do reflect
+
+628
+00:48:42,610 --> 00:48:46,100
+the way that humans talk about knowledge and so
+
+629
+00:48:46,110 --> 00:48:49,500
+it wasn't long before the design
+
+630
+00:48:49,530 --> 00:48:53,320
+change his mind in and the idea
+
+631
+00:48:53,320 --> 00:48:57,580
+of logical positivism and said you know this
+
+632
+00:48:58,630 --> 00:49:00,910
+to understand
+
+633
+00:49:01,000 --> 00:49:06,470
+the world it has certain knowledge of the universe is actually hoax
+
+634
+00:49:06,480 --> 00:49:12,510
+that was that was sort of coming for a long time we have certain
+
+635
+00:49:12,550 --> 00:49:13,660
+instead he
+
+636
+00:49:13,670 --> 00:49:15,550
+he said you know what i mean
+
+637
+00:49:15,550 --> 00:49:16,440
+what we
+
+638
+00:49:16,470 --> 00:49:18,250
+i understand about world
+
+639
+00:49:18,280 --> 00:49:22,640
+is really what we know of language and language is sort of self into the
+
+640
+00:49:24,660 --> 00:49:28,500
+who's leads to reality you are
+
+641
+00:49:28,530 --> 00:49:31,010
+tenuous at best
+
+642
+00:49:31,020 --> 00:49:33,430
+and you said you see the transition
+
+643
+00:49:33,450 --> 00:49:37,600
+so here we are students per classroom
+
+644
+00:49:37,640 --> 00:49:39,280
+we're using words
+
+645
+00:49:39,310 --> 00:49:44,210
+we're communicating i deal with this this probable values
+
+646
+00:49:44,230 --> 00:49:46,090
+and yet
+
+647
+00:49:46,090 --> 00:49:47,780
+and he said
+
+648
+00:49:47,840 --> 00:49:52,510
+there are strong connections between the words that is
+
+649
+00:49:52,530 --> 00:49:54,510
+an underlying reality
+
+650
+00:49:54,530 --> 00:49:57,000
+and wittgenstein saying
+
+651
+00:49:57,010 --> 00:49:59,300
+that's pretty much
+
+652
+00:49:59,310 --> 00:50:01,090
+we are we or not
+
+653
+00:50:01,100 --> 00:50:06,670
+so after this long long long long pursuit of knowledge
+
+654
+00:50:06,680 --> 00:50:12,190
+it's more less speaking about a a hundred years ago smallest in the hand
+
+655
+00:50:12,210 --> 00:50:16,440
+what philosophers philosopher said there were turned their attention
+
+656
+00:50:16,460 --> 00:50:19,900
+so what matters rather than
+
+657
+00:50:19,900 --> 00:50:22,690
+finding the foundations certain knowledge
+
+658
+00:50:22,720 --> 00:50:25,910
+and this is sometimes called the system call
+
+659
+00:50:25,910 --> 00:50:30,320
+the linguistic turn lost their knowledge of the world that language
+
+660
+00:50:32,740 --> 00:50:37,010
+again trying to find a strong connection between
+
+661
+00:50:37,030 --> 00:50:39,170
+an underlying reality is
+
+662
+00:50:40,260 --> 00:50:42,320
+five problem
+
+663
+00:50:42,320 --> 00:50:44,720
+we will instead went to me
+
+664
+00:50:44,740 --> 00:50:48,560
+and maybe that's one reason that we need to see
+
+665
+00:50:48,560 --> 00:50:49,750
+make some changes
+
+666
+00:50:49,760 --> 00:50:54,310
+so don't be surprised if history is changed and so it means that then some
+
+667
+00:50:54,310 --> 00:50:55,430
+of the slides
+
+668
+00:50:55,440 --> 00:50:58,500
+on the internet we look little different from
+
+669
+00:50:58,560 --> 00:51:01,600
+but this may happen it later
+
+670
+00:51:04,590 --> 00:51:10,460
+in the second chapter we focus on symmetry because symmetry is very important topic in
+
+671
+00:51:11,790 --> 00:51:13,970
+and so what we're going to do
+
+672
+00:51:13,980 --> 00:51:15,370
+we're going to talk about
+
+673
+00:51:15,390 --> 00:51:16,700
+groups and subgroups
+
+674
+00:51:16,710 --> 00:51:18,210
+group actions
+
+675
+00:51:18,310 --> 00:51:20,200
+symmetry groups
+
+676
+00:51:20,760 --> 00:51:26,390
+then another very important topic is covered in grass this is where you get groups
+
+677
+00:51:27,400 --> 00:51:29,720
+and topology
+
+678
+00:51:29,790 --> 00:51:31,110
+come together
+
+679
+00:51:31,130 --> 00:51:33,190
+and symmetry in graphs
+
+680
+00:51:33,230 --> 00:51:35,240
+graphs are very
+
+681
+00:51:35,300 --> 00:51:36,710
+dollars structures
+
+682
+00:51:38,090 --> 00:51:40,730
+they have nice symmetry properties
+
+683
+00:51:40,740 --> 00:51:44,040
+and then the amount of symmetry introduce
+
+684
+00:51:44,090 --> 00:51:48,400
+maybe very important so that's this point five
+
+685
+00:51:48,460 --> 00:51:51,470
+it's is very very important and this is where
+
+686
+00:51:51,490 --> 00:51:53,040
+a lot of research
+
+687
+00:51:53,150 --> 00:51:54,500
+going on
+
+688
+00:51:54,560 --> 00:51:56,140
+right now
+
+689
+00:51:56,170 --> 00:51:59,400
+here in slovenia but also
+
+690
+00:51:59,480 --> 00:52:03,050
+in other parts of the world
+
+691
+00:52:05,620 --> 00:52:12,400
+i will briefly touched in the two metric spaces and then we'll talk about representations
+
+692
+00:52:12,400 --> 00:52:15,180
+of graphs and symmetry
+
+693
+00:52:18,010 --> 00:52:20,630
+chapter three
+
+694
+00:52:21,320 --> 00:52:22,680
+we get two maps
+
+695
+00:52:22,690 --> 00:52:25,120
+for surfaces
+
+696
+00:52:25,890 --> 00:52:27,580
+topological graph theory
+
+697
+00:52:27,590 --> 00:52:29,900
+drawing graphs on surfaces
+
+698
+00:52:29,980 --> 00:52:32,770
+again multiple motivation
+
+699
+00:52:34,290 --> 00:52:38,520
+and political complexes surfaces classification of surfaces
+
+700
+00:52:38,540 --> 00:52:42,490
+connected sum and fundamental polygon so the surfaces
+
+701
+00:52:42,500 --> 00:52:47,370
+torus in space maps like systems operations on maps
+
+702
+00:52:47,390 --> 00:52:48,680
+petrie dual
+
+703
+00:52:48,700 --> 00:52:50,580
+symmetry of maps
+
+704
+00:52:50,590 --> 00:52:51,980
+and and then
+
+705
+00:52:52,000 --> 00:52:53,320
+closed curves
+
+706
+00:52:53,330 --> 00:52:56,180
+on surfaces
+
+707
+00:52:56,200 --> 00:52:59,180
+again you see some of the topics
+
+708
+00:52:59,200 --> 00:53:00,840
+will just follow
+
+709
+00:53:00,850 --> 00:53:02,510
+some recent results
+
+710
+00:53:03,440 --> 00:53:08,020
+our mathematicians
+
+711
+00:53:08,040 --> 00:53:09,730
+so finally
+
+712
+00:53:09,750 --> 00:53:12,880
+any questions
+
+713
+00:53:12,940 --> 00:53:14,620
+no questions that
+
+714
+00:53:14,650 --> 00:53:21,430
+we go to the introduction
+
+715
+00:53:21,470 --> 00:53:24,970
+so what we're going to let's start with the
+
+716
+00:53:24,980 --> 00:53:27,510
+with this example
+
+717
+00:53:27,540 --> 00:53:29,720
+so what we have here
+
+718
+00:53:29,720 --> 00:53:31,110
+it is the so-called
+
+719
+00:53:31,350 --> 00:53:33,100
+final configuration
+
+720
+00:53:33,140 --> 00:53:34,930
+what final plane
+
+721
+00:53:34,940 --> 00:53:38,220
+have you seen this picture before
+
+722
+00:53:41,950 --> 00:53:43,760
+not everybody
+
+723
+00:53:43,810 --> 00:53:50,190
+should explain OK let me explain a little bit and indeed what we have here
+
+724
+00:53:50,230 --> 00:53:52,170
+so we have seven objects
+
+725
+00:53:52,640 --> 00:53:54,430
+i call them one
+
+726
+00:53:56,260 --> 00:53:59,940
+i call them one
+
+727
+00:53:59,980 --> 00:54:11,430
+i call them one
+
+728
+00:54:18,610 --> 00:54:22,470
+so they're all abstract object OK
+
+729
+00:54:22,520 --> 00:54:25,290
+and i call this objects points
+
+730
+00:54:25,340 --> 00:54:28,050
+but there are points like this you know
+
+731
+00:54:28,130 --> 00:54:32,730
+the number of points they're just points
+
+732
+00:54:32,740 --> 00:54:34,930
+quote unquote
+
+733
+00:54:34,950 --> 00:54:37,430
+then i have seven other objects
+
+734
+00:54:37,440 --> 00:54:39,390
+they call a
+
+735
+00:54:43,560 --> 00:54:45,370
+f and g
+
+736
+00:54:45,390 --> 00:54:50,120
+and i call these guys lines
+
+737
+00:54:52,460 --> 00:54:54,620
+the other thing i do
+
+738
+00:54:54,640 --> 00:54:55,970
+i tell
+
+739
+00:54:55,980 --> 00:54:57,650
+which point
+
+740
+00:54:57,670 --> 00:54:59,250
+it lies
+
+741
+00:54:59,260 --> 00:55:00,770
+on which like
+
+742
+00:55:00,800 --> 00:55:01,960
+for instance
+
+743
+00:55:02,000 --> 00:55:03,120
+o point
+
+744
+00:55:05,320 --> 00:55:06,650
+and four
+
+745
+00:55:09,210 --> 00:55:12,360
+the same line a and this is one
+
+746
+00:55:12,980 --> 00:55:13,960
+and four
+
+747
+00:55:13,970 --> 00:55:14,850
+the line
+
+748
+00:55:14,870 --> 00:55:18,710
+like the same line of the drawing of course here
+
+749
+00:55:18,720 --> 00:55:23,180
+it is just schematic drawings there are no points here
+
+750
+00:55:23,220 --> 00:55:25,450
+just these three points
+
+751
+00:55:25,470 --> 00:55:29,880
+this is just to understand we're example for instance there is one
+
+752
+00:55:31,610 --> 00:55:32,800
+four curve
+
+753
+00:55:32,810 --> 00:55:34,190
+which choice two
+
+754
+00:55:34,720 --> 00:55:36,260
+six and seven
+
+755
+00:55:36,270 --> 00:55:37,840
+and if you look at
+
+756
+00:55:38,560 --> 00:55:42,710
+six and seven and then you get a line
+
+757
+00:55:42,720 --> 00:55:44,690
+OK so line f is this
+
+758
+00:55:51,970 --> 00:55:53,300
+so this
+
+759
+00:55:53,310 --> 00:55:57,920
+structures can be either either draw like this
+
+760
+00:55:57,930 --> 00:56:01,770
+and we know what we're are talking about or table like that can be
+
+761
+00:56:03,340 --> 00:56:07,960
+and then this the table that describe this combinatorial structure
+
+762
+00:56:12,300 --> 00:56:14,360
+this structure is called
+
+763
+00:56:14,470 --> 00:56:16,220
+that is the structure
+
+764
+00:56:16,350 --> 00:56:19,340
+so that's probably the most the simplest
+
+765
+00:56:19,360 --> 00:56:25,130
+algebraic structure that this is much simpler than the group's remember group or or or
+
+766
+00:56:28,760 --> 00:56:32,270
+it because it has one operation but this one
+
+767
+00:56:32,320 --> 00:56:36,020
+just one relation it has two sets of objects
+
+768
+00:56:37,200 --> 00:56:38,920
+he stands four points
+
+769
+00:56:38,930 --> 00:56:40,200
+and l
+
+770
+00:56:40,330 --> 00:56:43,140
+stands for blocks lines
+
+771
+00:56:43,220 --> 00:56:44,980
+and there is
+
+772
+00:56:46,070 --> 00:56:49,250
+relation by i here
+
+773
+00:56:49,260 --> 00:56:51,890
+which is called the incidence relation
+
+774
+00:56:51,910 --> 00:56:54,590
+which tells whether a point
+
+775
+00:56:54,600 --> 00:56:56,620
+these incidents with the line
+
+776
+00:56:56,620 --> 00:57:02,040
+so they can get testing examples from the same distribution so imagine that all what
+
+777
+00:57:02,040 --> 00:57:06,390
+doing whimsical imagine his learner and it's out the world exploring its learning all about
+
+778
+00:57:06,390 --> 00:57:09,960
+the environment and finally gets it and understand how the mind works and now it
+
+779
+00:57:09,960 --> 00:57:13,550
+spends the rest of its life can attract in its own body being forced to
+
+780
+00:57:13,980 --> 00:57:16,910
+act the way it did when it was still learning but knowing the right thing
+
+781
+00:57:16,910 --> 00:57:20,670
+to do and that's not be able to do it so so this is really
+
+782
+00:57:20,670 --> 00:57:24,000
+just not a good fit the fact that you really depend on this idea assumption
+
+783
+00:57:24,380 --> 00:57:25,930
+really makes it problematic to apply
+
+784
+00:57:26,350 --> 00:57:31,540
+learning algorithms are great in the PAC setting in this reinforcement learning setting with exploration
+
+785
+00:57:31,540 --> 00:57:35,290
+so that the gay people come up with other learning models the mistake bound model
+
+786
+00:57:35,290 --> 00:57:38,700
+is nice in that it assumes inputs are presented at the serial
+
+787
+00:57:38,700 --> 00:57:39,870
+right some
+
+788
+00:57:39,890 --> 00:57:43,520
+something out there is can produce any training example at any time
+
+789
+00:57:43,530 --> 00:57:48,090
+and now the models little bit different the model says that each time an example
+
+790
+00:57:48,090 --> 00:57:52,410
+comes in the learner has to provide the label and they can be wrong
+
+791
+00:57:52,440 --> 00:57:54,780
+and now covers parts red so
+
+792
+00:57:54,790 --> 00:57:58,150
+it gets it gets an instance it tries to predict the label it gets it
+
+793
+00:57:58,880 --> 00:58:02,800
+OK moves on it gets another instance maybe correct you get the correct answer green
+
+794
+00:58:02,800 --> 00:58:06,600
+bar the correct one it's another one and it's wrong it can continue to make
+
+795
+00:58:07,870 --> 00:58:12,550
+any arbitrary time but the total number of mistakes has to be bounded that's the
+
+796
+00:58:12,550 --> 00:58:13,820
+mistake bound
+
+797
+00:58:13,840 --> 00:58:16,980
+OK so here we've got this this is the learner that is is be given
+
+798
+00:58:17,020 --> 00:58:21,230
+any kind of examples from any kind of distribution but it can only make a
+
+799
+00:58:21,230 --> 00:58:24,760
+finite number of states about the number of mistakes for it to be a successful
+
+800
+00:58:24,760 --> 00:58:27,540
+mistake bound learning algorithm
+
+801
+00:58:27,550 --> 00:58:30,200
+now you can only really works if this is true as well you can only
+
+802
+00:58:30,200 --> 00:58:35,590
+really successfully make learning algorithms under restriction restrictive assumptions about what the hypothesis class is
+
+803
+00:58:35,590 --> 00:58:40,250
+what is the function that actually labeling these instances but unless there's a wide variety
+
+804
+00:58:40,250 --> 00:58:42,660
+of algorithms that are
+
+805
+00:58:42,680 --> 00:58:46,330
+sorry of a function class that are learnable interstate model
+
+806
+00:58:46,360 --> 00:58:47,820
+OK so
+
+807
+00:58:47,840 --> 00:58:51,990
+this is getting as much closer to something that we can use in reinforcement learning
+
+808
+00:58:51,990 --> 00:58:57,730
+settings the problem is from from the previous slide if it's making mistakes and it
+
+809
+00:58:57,730 --> 00:59:01,360
+doesn't know it's making mistakes it doesn't know when something's i guess it just guessing
+
+810
+00:59:01,360 --> 00:59:06,260
+and the try count against it it won't necessarily explore efficiently
+
+811
+00:59:06,280 --> 00:59:10,190
+so in particular if it's imagining all you know what's behind the screen i'm going
+
+812
+00:59:10,190 --> 00:59:11,720
+to assume that there's nothing
+
+813
+00:59:11,740 --> 00:59:15,510
+valuable behind the screen that might be mistaken the mistake bound model so that's OK
+
+814
+00:59:15,510 --> 00:59:19,490
+it's just a mistake but in the MDP setting in the reinforcement learning setting that
+
+815
+00:59:19,490 --> 00:59:23,560
+mistake could actually cause it to never get near optimal reward because maybe the optimal
+
+816
+00:59:23,560 --> 00:59:26,240
+thing is just go behind the screen
+
+817
+00:59:26,260 --> 00:59:28,790
+the following nothing there
+
+818
+00:59:28,810 --> 00:59:30,550
+to one side
+
+819
+00:59:30,560 --> 00:59:36,740
+so there's really nothing there is far so so this this mistake bound setting where
+
+820
+00:59:36,740 --> 00:59:39,870
+where it doesn't really know what could be making mistakes and not it can actually
+
+821
+00:59:39,870 --> 00:59:43,370
+achieve this PAC MDP time can found
+
+822
+00:59:44,350 --> 00:59:48,080
+so what we need is said well this the quick setting is going to do
+
+823
+00:59:48,080 --> 00:59:49,430
+things all differently now
+
+824
+00:59:49,450 --> 00:59:53,010
+but the learning algorithm if it's given an instance that can predict the label it
+
+825
+00:59:53,010 --> 00:59:57,560
+knows it can accurately predict the label cause there's multiple possibilities that could work it
+
+826
+00:59:57,560 --> 00:59:59,490
+has to say i don't know know
+
+827
+00:59:59,510 --> 01:00:04,910
+shrug shoulders k and so we can start adversarially selected input is coming into could
+
+828
+01:00:04,910 --> 01:00:07,760
+say i don't know and maybe another instance comes in cycle with this when i
+
+829
+01:00:07,760 --> 01:00:11,030
+get and gives us to give the right answer i don't know the right answer
+
+830
+01:00:11,030 --> 01:00:14,260
+right answer right answer i don't know like the mistake bound model it could continue
+
+831
+01:00:14,260 --> 01:00:17,510
+saying i don't know any arbitrary time in the future
+
+832
+01:00:17,540 --> 01:00:21,160
+but the total number of times it's going to say i don't know has to
+
+833
+01:00:21,160 --> 01:00:25,870
+be bounded by something small for going successful quickly learning out
+
+834
+01:00:25,870 --> 01:00:31,160
+this can be used in reinforcement learning settings and give us those those exploration PAC
+
+835
+01:00:31,160 --> 01:00:37,120
+MDP kinds of bounds because we can do is assume any transition that can predict
+
+836
+01:00:37,140 --> 01:00:38,830
+may lead to something
+
+837
+01:00:38,850 --> 01:00:43,350
+and we can predict predict accurately and therefore making mistakes on those
+
+838
+01:00:43,970 --> 01:00:48,370
+the combination of some kind of successful quick learner and this model based setting get
+
+839
+01:00:48,970 --> 01:00:53,050
+reinforcement learning algorithms with these nice guarantees
+
+840
+01:00:53,060 --> 01:00:57,390
+so that's the that's the basic story there
+
+841
+01:00:57,700 --> 01:01:02,140
+there's there's a nice proof that this works in general when combined with an algorithm
+
+842
+01:01:02,140 --> 01:01:06,790
+that is often referred to as max because it assumes that anything it's unknown is
+
+843
+01:01:06,790 --> 01:01:12,560
+that has maximum reward right reward max that the most training but anyway it does
+
+844
+01:01:12,560 --> 01:01:14,600
+work and
+
+845
+01:01:14,620 --> 01:01:18,890
+this this this class of algorithms has been used for learning and in these flat
+
+846
+01:01:18,890 --> 01:01:22,700
+mdps where there's and states in each state can be completely different from every other
+
+847
+01:01:22,700 --> 01:01:25,050
+state but it's still going to learn about them is going to decide what to
+
+848
+01:01:25,050 --> 01:01:28,930
+do in the states and there's a number of key ideas we know that the
+
+849
+01:01:28,930 --> 01:01:33,550
+optimal action for approximate model is near optimal in the real real model which means
+
+850
+01:01:33,550 --> 01:01:37,330
+if we know that the model is learned the environment may not be perfect but
+
+851
+01:01:37,330 --> 01:01:43,350
+it's epsilon close all transitions then taking the optimal actions with respect to that gas
+
+852
+01:01:43,370 --> 01:01:47,370
+about the environment this close guess is going to lead to near optimal reward in
+
+853
+01:01:47,370 --> 01:01:51,120
+the environment there's this weird discontinuity so if you just get one little thing a
+
+854
+01:01:51,120 --> 01:01:54,100
+little bit wrong your arbitrarily far away from from optimal
+
+855
+01:01:54,280 --> 01:01:58,890
+so that's the simulation lemma says we can simulate the environment with approximate model and
+
+856
+01:01:58,890 --> 01:02:03,640
+explore exploit lemma says basically this is a cute idea if there's part of the
+
+857
+01:02:03,640 --> 01:02:07,120
+of the state space that we can reach because it's it's very low probability to
+
+858
+01:02:07,120 --> 01:02:09,660
+be able to get to one of these states then even if they have high
+
+859
+01:02:09,680 --> 01:02:12,990
+reward we don't have to go there we can get near optimal reward just staying
+
+860
+01:02:12,990 --> 01:02:15,580
+among the states that we can get two with high probability
+
+861
+01:02:15,600 --> 01:02:20,620
+and that means that when we take actions within the non states if we can
+
+862
+01:02:20,620 --> 01:02:23,970
+reach any unknown state where either OK this is a better way to say either
+
+863
+01:02:24,060 --> 01:02:28,350
+the case that our algorithm can explore a can with high probability get some state
+
+864
+01:02:28,350 --> 01:02:32,310
+that hasn't seen yet and learn about it or if you can't do that it
+
+865
+01:02:32,310 --> 01:02:36,150
+must be able to exploit which means among the states it already understands well it
+
+866
+01:02:36,150 --> 01:02:38,470
+can achieve high reward for the real model
+
+867
+01:02:38,490 --> 01:02:43,140
+OK so these two pieces together give us these these nice efficient learning algorithms in
+
+868
+01:02:43,140 --> 01:02:45,970
+the in the in the flat case there's a number of papers that talked about
+
+869
+01:02:45,970 --> 01:02:49,560
+this but some people have looked at in last to call it on flat in
+
+870
+01:02:49,560 --> 01:02:54,260
+cases where there's there's generalizations that can be made between states
+
+871
+01:02:54,280 --> 01:02:58,180
+like for example if the dynamics are determined by dynamic bayes net some kind of
+
+872
+01:02:58,180 --> 01:03:03,470
+factor model or it's good a metric space is continuous there's a continuous state space
+
+873
+01:03:03,470 --> 01:03:07,390
+and the relationship between nearby states and the other states that are nearby
+
+874
+01:03:07,410 --> 01:03:11,390
+or in what we showed is in general any function class that they can be
+
+875
+01:03:11,390 --> 01:03:15,010
+quickly learned we get the same kind of nice
+
+876
+01:03:15,030 --> 01:03:18,830
+ideas that come into play and can get near optimal reward
+
+877
+01:03:18,850 --> 01:03:22,490
+and in particular what what we show with the
+
+878
+01:03:22,510 --> 01:03:27,390
+this is the only who's my cousin who's post-doc now and looking for good job
+
+879
+01:03:27,390 --> 01:03:31,350
+very bright man and so when he was able was show his thesis is that
+
+880
+01:03:31,350 --> 01:03:34,810
+is in any quick learner that we plug into this framework gives us the PAC
+
+881
+01:03:34,810 --> 01:03:39,010
+MDP bounds the time to learning environment depends on the time to learn the transition
+
+882
+01:03:39,010 --> 01:03:42,510
+function so if it's the kind of transition function that you can learn with very
+
+883
+01:03:42,510 --> 01:03:46,700
+few examples very effectively then learning to explore the state space is actually going to
+
+884
+01:03:46,700 --> 01:03:50,080
+be efficient as well
+
+885
+01:03:50,100 --> 01:03:53,100
+so i so you might ask i would hope if you're paying attention you would
+
+886
+01:03:53,120 --> 01:03:57,330
+ask okay but are things that we can quickly so he always should far if
+
+887
+01:03:57,330 --> 01:04:01,490
+you can click on function class action showing life stated use of our if you
+
+888
+01:04:01,490 --> 01:04:04,450
+can click on the function class then you can
+
+889
+01:04:04,450 --> 01:04:09,700
+behave well you can be behave efficiently in reinforcement learning sense in an environment where
+
+890
+01:04:09,700 --> 01:04:11,700
+the transitions have that function
+
+891
+01:04:11,720 --> 01:04:15,700
+but what are some things we can quickly well the easiest simplest actually the basis
+
+892
+01:04:15,700 --> 01:04:21,410
+of almost all the interesting stochastic algorithms is to learn the probability values so basically
+
+893
+01:04:21,430 --> 01:04:25,890
+coin flip if the weighted coin you don't know initially the probability that's going to
+
+894
+01:04:25,890 --> 01:04:29,800
+so basically restrictions of x onto those cliques
+
+895
+01:04:29,810 --> 01:04:36,790
+and corresponding functions on it and correspondingly the kind of x prime could be written
+
+896
+01:04:36,830 --> 01:04:38,060
+as the sum
+
+897
+01:04:40,020 --> 01:04:41,700
+well the maximal cliques
+
+898
+01:04:41,720 --> 01:04:47,150
+of kernels just defined on the maximal cliques
+
+899
+01:04:47,160 --> 01:04:50,820
+this was already a great improvement as it allowed us
+
+900
+01:04:50,830 --> 01:04:55,850
+the decompose any kernel that i might want to
+
+901
+01:04:55,860 --> 01:04:58,060
+use for a certain
+
+902
+01:04:58,070 --> 01:04:59,460
+graphical model
+
+903
+01:04:59,470 --> 01:05:03,070
+in two kernels which just basically
+
+904
+01:05:03,140 --> 01:05:07,980
+have terms interacting we're having edges within the graph
+
+905
+01:05:07,990 --> 01:05:10,170
+so this actually very simple intuition
+
+906
+01:05:10,290 --> 01:05:12,290
+but it allows us to do this
+
+907
+01:05:12,340 --> 01:05:16,390
+and show that this is actually an issue sufficient condition
+
+908
+01:05:17,690 --> 01:05:20,460
+so what we're going to do today is
+
+909
+01:05:20,500 --> 01:05:24,840
+we're going to look at specific graphical structures here
+
+910
+01:05:24,860 --> 01:05:27,850
+specific models of conditioning
+
+911
+01:05:27,870 --> 01:05:31,940
+and then derive specific months out of it and they have names and they exist
+
+912
+01:05:31,940 --> 01:05:35,570
+and people use them but we look at the general framework so
+
+913
+01:05:35,590 --> 01:05:37,010
+what you can do is
+
+914
+01:05:37,070 --> 01:05:41,080
+you can just draw whatever crap the model you want
+
+915
+01:05:41,120 --> 01:05:46,930
+and then derived from that quite automatically what economists would look like what inference procedure
+
+916
+01:05:46,960 --> 01:05:48,430
+should look like
+
+917
+01:05:48,440 --> 01:05:52,410
+well you think can actually go going solve it efficiently it's a completely different story
+
+918
+01:05:52,470 --> 01:05:57,300
+because it's very easy to design one that look really appealing in convincing but impossible
+
+919
+01:05:57,310 --> 01:05:58,380
+to solve
+
+920
+01:05:58,430 --> 01:06:01,140
+but OK that's
+
+921
+01:06:01,150 --> 01:06:04,390
+how they're touching upon that a little bit to towards this
+
+922
+01:06:04,420 --> 01:06:05,900
+set of slides
+
+923
+01:06:05,920 --> 01:06:10,800
+well there is actually a lot of research going on in this area right now
+
+924
+01:06:10,820 --> 01:06:13,420
+what i'm not even going to get into
+
+925
+01:06:13,430 --> 01:06:17,810
+so the fact that while i've been pretending to be a bit bayesian here
+
+926
+01:06:17,820 --> 01:06:21,460
+by saying well we've got the like we've got the prior we put all those
+
+927
+01:06:21,460 --> 01:06:25,670
+things together and perform parameter estimation but actually that's not
+
+928
+01:06:25,720 --> 01:06:30,080
+the true and proper bayesian procedure to do things is if you have a posterior
+
+929
+01:06:31,200 --> 01:06:34,740
+you don't actually need to sample from that you need to compute expectations you need
+
+930
+01:06:34,740 --> 01:06:36,760
+to integrate out of these
+
+931
+01:06:36,770 --> 01:06:42,630
+the trouble is that this is extremely hard even the simplest of all cases
+
+932
+01:06:43,390 --> 01:06:46,300
+things like expectation propagation of tom minka
+
+933
+01:06:46,310 --> 01:06:51,460
+for instance help in this context but they're not really perfect either there's a lot
+
+934
+01:06:52,570 --> 01:06:57,600
+well there is this entire family of markov chain monte carlo for various posterior part
+
+935
+01:06:57,620 --> 01:07:00,560
+of papers around and those things seem to be
+
+936
+01:07:00,580 --> 01:07:04,180
+slow and hard to implement and they don't work
+
+937
+01:07:04,230 --> 01:07:06,640
+significantly better in practice
+
+938
+01:07:06,690 --> 01:07:09,980
+so usually when you see a paper it works a little bit better but you
+
+939
+01:07:09,980 --> 01:07:12,540
+pay a huge price in terms of computation
+
+940
+01:07:12,550 --> 01:07:17,450
+and also it can be much nasty in terms of the ability to analyse the
+
+941
+01:07:19,110 --> 01:07:20,890
+so this is why
+
+942
+01:07:20,910 --> 01:07:22,500
+at least for this
+
+943
+01:07:22,530 --> 01:07:26,060
+set of slides i'm not even to go into this
+
+944
+01:07:26,070 --> 01:07:31,630
+also because there are people much better than me understand MCMC better than i do
+
+945
+01:07:31,640 --> 01:07:34,930
+and so for instance days
+
+946
+01:07:35,620 --> 01:07:39,200
+a guy called paul bear
+
+947
+01:07:39,210 --> 01:07:44,810
+they just like robert was written entirely very nice book
+
+948
+01:07:45,610 --> 01:07:47,420
+sampling methods
+
+949
+01:07:47,460 --> 01:07:50,740
+but what pages being very good book
+
+950
+01:07:50,790 --> 01:07:51,860
+he's also
+
+951
+01:07:51,890 --> 01:07:54,310
+got good slides from the summer school in there
+
+952
+01:07:54,330 --> 01:07:57,020
+so if you go to the there there
+
+953
+01:07:57,030 --> 01:08:00,610
+web page of the summer school you might be able to download the slides
+
+954
+01:08:00,660 --> 01:08:03,140
+about five hundred slide
+
+955
+01:08:03,150 --> 01:08:06,910
+so you go either through five the pages in the book of five hundred slide
+
+956
+01:08:07,260 --> 01:08:08,460
+but that would
+
+957
+01:08:08,490 --> 01:08:11,280
+give you pointers how to tackle this problem
+
+958
+01:08:11,300 --> 01:08:13,170
+this is not a solved problem
+
+959
+01:08:14,430 --> 01:08:17,590
+so if you come up with a clever way of
+
+960
+01:08:17,600 --> 01:08:21,010
+making headway there i mean you can probably have quite an impact
+
+961
+01:08:21,020 --> 01:08:27,240
+i don't know the name of the book but if you look for markov chain
+
+962
+01:08:27,240 --> 01:08:29,590
+monte carlo and while there
+
+963
+01:08:29,600 --> 01:08:30,770
+in google
+
+964
+01:08:30,790 --> 01:08:33,180
+i'm quite sure you'll find it
+
+965
+01:08:39,720 --> 01:08:42,430
+going on my bluetooth as disconnected
+
+966
+01:08:48,330 --> 01:08:51,630
+we have
+
+967
+01:08:51,680 --> 01:08:52,750
+what we do
+
+968
+01:08:52,770 --> 01:08:55,530
+look at conditional random fields
+
+969
+01:08:55,540 --> 01:09:01,530
+and discussed a little bit message passing my guess is thomas hofmann will be discussing
+
+970
+01:09:01,530 --> 01:09:04,900
+that to some extent on thursday and friday again
+
+971
+01:09:04,910 --> 01:09:08,570
+from a slightly different point of view so
+
+972
+01:09:08,580 --> 01:09:13,090
+guess if you see from several points of view look familiar you would probably know
+
+973
+01:09:13,090 --> 01:09:18,880
+some of this already from this morning when doug aberdeen was talking about dynamic programming
+
+974
+01:09:18,880 --> 01:09:23,160
+because what will be doing here is just the activation of the dynamic programming
+
+975
+01:09:27,800 --> 01:09:31,010
+i'll briefly mention this this is beautiful theory
+
+976
+01:09:31,050 --> 01:09:37,370
+unfortunately as we tried it out it's not terribly good for practical implementations
+
+977
+01:09:38,450 --> 01:09:41,440
+back to the hammersley clifford theorem
+
+978
+01:09:42,580 --> 01:09:44,330
+here's our graphical model
+
+979
+01:09:44,340 --> 01:09:46,240
+sorry nicely triangulated
+
+980
+01:09:46,350 --> 01:09:50,630
+and these are some of the maximal cliques and we know that things decompose that's
+
+981
+01:09:50,630 --> 01:09:52,480
+exactly expansion here
+
+982
+01:09:52,580 --> 01:09:55,630
+and that's our kernel
+
+983
+01:09:56,910 --> 01:10:00,060
+it decomposes along the maximal cliques
+
+984
+01:10:00,150 --> 01:10:03,320
+now what's the conditional random field
+
+985
+01:10:03,330 --> 01:10:06,480
+well conditional random field is a situation where
+
+986
+01:10:06,490 --> 01:10:08,820
+this is a graphical model
+
+987
+01:10:08,910 --> 01:10:10,970
+but the chain of lakes is
+
+988
+01:10:11,020 --> 01:10:14,570
+this could be text that could be a biological sequence could be anything
+
+989
+01:10:14,580 --> 01:10:17,990
+and i want to annotate sequence in some way
+
+990
+01:10:18,040 --> 01:10:20,880
+prince i might want to tag the named entities
+
+991
+01:10:20,930 --> 01:10:23,550
+like well
+
+992
+01:10:23,600 --> 01:10:27,260
+first name last name names of cities and so on
+
+993
+01:10:27,280 --> 01:10:28,770
+and well
+
+994
+01:10:28,790 --> 01:10:30,470
+you can clearly see that this is
+
+995
+01:10:30,480 --> 01:10:34,940
+not so obvious even if you just had like a list of features so well
+
+996
+01:10:34,940 --> 01:10:38,600
+some names like for instance smaller are quite likely
+
+997
+01:10:38,620 --> 01:10:40,020
+to be
+
+998
+01:10:40,050 --> 01:10:41,200
+proper names
+
+999
+01:10:41,210 --> 01:10:47,350
+things like well bush whether that means the probability is president is not quite so
+
+1000
+01:10:49,810 --> 01:10:53,050
+you might need to exploit the context
+
+1001
+01:10:53,070 --> 01:10:56,310
+a very simple model would be to say
+
+1002
+01:10:57,220 --> 01:11:00,630
+every word depends on its neighbors
+
+1003
+01:11:00,650 --> 01:11:03,240
+course any word will have a bearing on
+
+1004
+01:11:03,260 --> 01:11:04,920
+how it's annotated
+
+1005
+01:11:04,930 --> 01:11:07,220
+but probably also its neighbours
+
+1006
+01:11:07,230 --> 01:11:12,100
+will have a certain influence on what annotation of the word
+
+1007
+01:11:12,120 --> 01:11:14,600
+so if your friends have mister bush
+
+1008
+01:11:14,610 --> 01:11:16,560
+o president bush
+
+1009
+01:11:16,560 --> 01:11:19,290
+that separates two classes
+
+1010
+01:11:19,310 --> 01:11:21,480
+so actually were
+
+1011
+01:11:21,500 --> 01:11:24,760
+you want to find
+
+1012
+01:11:24,820 --> 01:11:26,940
+and yet
+
+1013
+01:11:26,940 --> 01:11:30,930
+that separates the positive examples here
+
+1014
+01:11:30,950 --> 01:11:34,550
+it is like to have the negative examples
+
+1015
+01:11:34,570 --> 01:11:35,620
+the set
+
+1016
+01:11:35,710 --> 01:11:38,470
+classes for thinking about positive
+
+1017
+01:11:38,490 --> 01:11:40,220
+and negative
+
+1018
+01:11:40,270 --> 01:11:44,200
+but it could be told to other classes
+
+1019
+01:11:44,210 --> 01:11:50,490
+that you want to describe lacks for
+
+1020
+01:11:50,980 --> 01:11:55,510
+so you want to find the function which
+
+1021
+01:11:55,550 --> 01:11:56,450
+the line
+
+1022
+01:11:56,450 --> 01:11:58,620
+here is the diamond
+
+1023
+01:11:58,620 --> 01:12:04,660
+she i mean higher dimensional
+
+1024
+01:12:06,920 --> 01:12:08,540
+you have to
+
+1025
+01:12:09,250 --> 01:12:12,250
+the your training data are linear
+
+1026
+01:12:13,230 --> 01:12:14,560
+that's the budget
+
+1027
+01:12:14,570 --> 01:12:18,670
+my point is to mention
+
+1028
+01:12:18,680 --> 01:12:21,150
+in my mind
+
+1029
+01:12:23,210 --> 01:12:24,730
+could that
+
+1030
+01:12:24,750 --> 01:12:26,960
+we are of the
+
+1031
+01:12:27,010 --> 01:12:29,690
+think examples
+
+1032
+01:12:29,690 --> 01:12:34,370
+so i support vector machine in my
+
+1033
+01:12:34,430 --> 01:12:36,320
+the height
+
+1034
+01:12:36,340 --> 01:12:38,300
+that the
+
+1035
+01:12:38,360 --> 01:12:41,960
+we might have more
+
+1036
+01:12:41,980 --> 01:12:44,350
+with regard to this
+
+1037
+01:12:44,360 --> 01:12:47,260
+the support vector
+
+1038
+01:12:47,390 --> 01:12:50,020
+support vector vectors
+
+1039
+01:12:52,850 --> 01:12:54,390
+nine more
+
+1040
+01:13:07,780 --> 01:13:12,670
+so we look at a time when node d
+
+1041
+01:13:12,680 --> 01:13:15,020
+five because
+
+1042
+01:13:16,140 --> 01:13:18,540
+that means that
+
+1043
+01:13:18,620 --> 01:13:20,490
+but also for
+
+1044
+01:13:20,500 --> 01:13:22,620
+that you my love
+
+1045
+01:13:25,100 --> 01:13:27,190
+they could be
+
+1046
+01:13:27,200 --> 01:13:30,880
+that positive examples like the negative
+
+1047
+01:13:31,140 --> 01:13:32,620
+the first
+
+1048
+01:13:32,640 --> 01:13:34,790
+and they room
+
+1049
+01:13:34,820 --> 01:13:39,070
+it's not
+
+1050
+01:13:39,120 --> 01:13:42,490
+so kernel methods use specific
+
+1051
+01:13:42,510 --> 01:13:48,750
+that's the idea can be generalized to examples that are not necessarily linearly separable
+
+1052
+01:13:48,810 --> 01:13:51,770
+two examples that can be used by
+
+1053
+01:13:55,070 --> 01:13:58,410
+but let's look at
+
+1054
+01:14:01,810 --> 01:14:07,650
+so we have
+
+1055
+01:14:07,660 --> 01:14:09,880
+and we have a feature vector
+
+1056
+01:14:09,900 --> 01:14:13,170
+x one to x and so we have
+
+1057
+01:14:14,220 --> 01:14:18,840
+and you can see it has
+
+1058
+01:14:18,840 --> 01:14:22,700
+one of the two classes that
+
+1059
+01:14:23,000 --> 01:14:29,000
+why why mines one plus one
+
+1060
+01:14:29,030 --> 01:14:34,430
+so i x y feature vector is described as being
+
+1061
+01:14:34,450 --> 01:14:35,740
+should be
+
+1062
+01:14:39,340 --> 01:14:50,710
+plus one indicates that x y is negative or positive
+
+1063
+01:14:50,720 --> 01:14:55,940
+so the
+
+1064
+01:14:57,480 --> 01:15:01,320
+we again
+
+1065
+01:15:01,370 --> 01:15:03,290
+the height the
+
+1066
+01:15:03,320 --> 01:15:05,290
+that the
+
+1067
+01:15:05,300 --> 01:15:08,560
+so the point that lies on the high
+
+1068
+01:15:08,570 --> 01:15:09,590
+this these
+
+1069
+01:15:09,990 --> 01:15:15,680
+that the phi of point x that lies on a high
+
+1070
+01:15:19,050 --> 01:15:21,940
+that w
+
+1071
+01:15:22,000 --> 01:15:24,120
+multiply by
+
+1072
+01:15:25,980 --> 01:15:28,140
+because the
+
+1073
+01:15:28,140 --> 01:15:34,930
+we can say that we are in the presence of stability and the summation
+
+1074
+01:15:34,940 --> 01:15:36,440
+this is the basic idea
+
+1075
+01:15:36,460 --> 01:15:39,460
+i tried to do this
+
+1076
+01:15:39,560 --> 01:15:44,640
+and here we have the estimate for alpha
+
+1077
+01:15:46,910 --> 01:15:51,850
+the value of alpha for the samples one point six to three
+
+1078
+01:15:51,870 --> 01:15:58,750
+and i know that it's difficult to see because i was forced to to maintain
+
+1079
+01:15:59,460 --> 01:16:03,940
+the table is more but i
+
+1080
+01:16:04,210 --> 01:16:11,190
+i can assure you that are out of twenty cases just in one cases we
+
+1081
+01:16:11,190 --> 01:16:15,660
+have an estimate of alpha which is not compatible with the one point six to
+
+1082
+01:16:15,660 --> 01:16:21,810
+three were comfortable means that they the values comprised
+
+1083
+01:16:21,830 --> 01:16:25,940
+inside these rockets
+
+1084
+01:16:26,330 --> 01:16:31,980
+given by one plus one standard deviation you find one point six
+
+1085
+01:16:32,520 --> 01:16:40,910
+so it's a this value is not statistically significant from one point three so from
+
+1086
+01:16:40,910 --> 01:16:42,290
+this point of view
+
+1087
+01:16:42,310 --> 01:16:49,080
+we are in the presence of a process which is almost stable information
+
+1088
+01:16:49,100 --> 01:16:52,750
+but there was no problem
+
+1089
+01:16:52,750 --> 01:16:56,500
+and this problem is that
+
+1090
+01:16:56,520 --> 01:17:01,770
+this was rise by referee what about if we have a common shock
+
+1091
+01:17:01,790 --> 01:17:07,160
+if we have a common shark it's one it's possible that we have factors distribution
+
+1092
+01:17:07,210 --> 01:17:14,690
+simply because all sectors all the firms are affected by some show
+
+1093
+01:17:14,690 --> 01:17:23,370
+so i had the problem of separating the common shock from all these amount of
+
+1094
+01:17:24,350 --> 01:17:29,020
+that's standard econometrics which is called conformal factor model
+
+1095
+01:17:29,040 --> 01:17:33,750
+but the common factor models based on this assumption will show it
+
+1096
+01:17:33,810 --> 01:17:35,210
+for the errors
+
+1097
+01:17:35,250 --> 01:17:40,290
+since i'm interested in the errors of the use of this
+
+1098
+01:17:41,580 --> 01:17:44,750
+i e e i could not use
+
+1099
+01:17:45,190 --> 01:17:48,290
+standard for common factor models
+
+1100
+01:17:48,350 --> 01:17:53,980
+so i try to estimate the several across sections
+
+1101
+01:17:54,500 --> 01:18:01,190
+regression by using an algorithm which is able to estimate
+
+1102
+01:18:01,190 --> 01:18:08,290
+i linear regression and the assumption of the latest levy stable distributions
+
+1103
+01:18:08,310 --> 01:18:15,210
+and these algorithm reports the value of the alpha
+
+1104
+01:18:15,230 --> 01:18:18,350
+of the distribution for the arrows
+
+1105
+01:18:18,370 --> 01:18:19,620
+so if
+
+1106
+01:18:19,910 --> 01:18:21,790
+after we remove
+
+1107
+01:18:21,810 --> 01:18:23,460
+common factor
+
+1108
+01:18:23,520 --> 01:18:28,940
+from the data for a single year
+
+1109
+01:18:28,940 --> 01:18:31,560
+for the wall sample
+
+1110
+01:18:31,580 --> 01:18:33,140
+and we end up
+
+1111
+01:18:33,160 --> 01:18:39,020
+with a narrow this is what remains after we remove the commercial which is still
+
+1112
+01:18:39,020 --> 01:18:44,870
+low stable distribution i can maintain that's my results
+
+1113
+01:18:44,890 --> 01:18:46,170
+our robots
+
+1114
+01:18:46,190 --> 01:18:49,560
+and this is what happens
+
+1115
+01:18:49,580 --> 01:18:53,640
+here you have the alpha
+
+1116
+01:18:53,660 --> 01:19:01,290
+for all the cross cross-section regressions eliminating the common shock
+
+1117
+01:19:01,310 --> 01:19:05,140
+and this is the alpha four
+
+1118
+01:19:05,190 --> 01:19:09,810
+for the for the air for the distribution of the k
+
+1119
+01:19:09,830 --> 01:19:14,730
+and a lot we have chaka
+
+1120
+01:19:14,790 --> 01:19:19,040
+a and basically no cases
+
+1121
+01:19:19,100 --> 01:19:25,000
+the arrows what remains after removal common shock is again leaves the city
+
+1122
+01:19:25,040 --> 01:19:31,350
+so i don't think about it shocks are likely to be distributed as a stable
+
+1123
+01:19:31,370 --> 01:19:37,870
+we have an infinite second moment what does it mean what what's the implications for
+
+1124
+01:19:37,870 --> 01:19:45,060
+business cycle well implication is quite interesting because
+
+1125
+01:19:45,540 --> 01:19:50,940
+suppose that we we we start and not going to try to fool the details
+
+1126
+01:19:51,930 --> 01:19:56,210
+this is the vision but just a rough idea was going on here suppose that
+
+1127
+01:19:56,230 --> 01:20:00,410
+we start from such productive functions
+
+1128
+01:20:00,460 --> 01:20:07,170
+there's a paper by how shows that the growth rate of GDP
+
+1129
+01:20:07,190 --> 01:20:10,520
+can be given by
+
+1130
+01:20:10,520 --> 01:20:13,190
+the sum of shots
+
+1131
+01:20:13,250 --> 01:20:17,460
+to the productivity of inference
+
+1132
+01:20:17,560 --> 01:20:20,060
+OK this is same
+
+1133
+01:20:20,080 --> 01:20:25,830
+and this is total GDP so these are normalized phase and this is interviewed look
+
+1134
+01:20:25,830 --> 01:20:36,640
+the the the the
+
+1135
+01:20:36,660 --> 01:20:48,820
+this presentation is delivered by the stanford center for professional development
+
+1136
+01:20:48,900 --> 01:20:53,820
+OK good morning are welcome to cystatin nine the machine learning class
+
+1137
+01:20:53,830 --> 01:20:57,780
+so what i want to do today is discovered spend a long time going over
+
+1138
+01:20:57,780 --> 01:21:00,060
+the logistics for the class and then
+
+1139
+01:21:00,110 --> 01:21:02,840
+well start to talk a bit about machine learning
+
+1140
+01:21:02,890 --> 01:21:09,910
+by way of introduction my name is actually LP instructor for this class and worker
+
+1141
+01:21:09,920 --> 01:21:14,340
+machine learning that worked on it for about fifteen years now and i actually think
+
+1142
+01:21:14,340 --> 01:21:18,400
+the machine learning is that you the most exciting field of all the computer science
+
+1143
+01:21:18,400 --> 01:21:22,260
+of society always excited about teaching this class of
+
+1144
+01:21:22,390 --> 01:21:27,110
+sometimes actually think that machine learning is not only the most exciting thing computer science
+
+1145
+01:21:27,110 --> 01:21:30,210
+but the most exciting thing in all of human endeavor
+
+1146
+01:21:30,260 --> 01:21:31,920
+maybe bias there
+
+1147
+01:21:31,930 --> 01:21:38,430
+also to use the TA's for all practices seen research in related the machine learning
+
+1148
+01:21:38,460 --> 01:21:43,060
+now it's machine learning on a public stock is on
+
+1149
+01:21:43,070 --> 01:21:48,940
+works in machine learning and computer vision on KTH hang is actually neuroscientists who applies
+
+1150
+01:21:48,990 --> 01:21:55,000
+machine learning algorithms to try to understand human brain tom those another phd student works
+
+1151
+01:21:55,000 --> 01:22:01,290
+in computational biology and in so the basic fundamentals of your learning on zico kolter
+
+1152
+01:22:01,290 --> 01:22:02,590
+is the haiti a
+
+1153
+01:22:02,610 --> 01:22:07,190
+on seeing the thirty two years in a row now works the machine learning and
+
+1154
+01:22:07,190 --> 01:22:13,290
+applies them to a bunch of robots and daniel ramage is of course not here
+
+1155
+01:22:13,330 --> 01:22:17,250
+daniel applies learning algorithms the problems in natural language processing
+
+1156
+01:22:18,680 --> 01:22:21,870
+so you get to know the tears in me much better from this quarter but
+
+1157
+01:22:21,870 --> 01:22:23,490
+just from you know
+
+1158
+01:22:23,500 --> 01:22:26,520
+the sorts of things that he is do i hope you know really tell the
+
+1159
+01:22:26,520 --> 01:22:31,610
+machine learning is highly interdisciplinary of
+
+1160
+01:22:31,630 --> 01:22:35,560
+topic in which we just that he is to find the any offers problems in
+
+1161
+01:22:35,560 --> 01:22:40,950
+computer vision in biology and robots and language of and machine learning is one of
+
+1162
+01:22:40,950 --> 01:22:47,140
+those things that has had and is having a large impact on many applications
+
+1163
+01:22:47,150 --> 01:22:51,960
+so just in my own daily work i actually frequently and talking to people that
+
+1164
+01:22:51,960 --> 01:22:58,350
+helicopter pilots the biologist the people in computer systems and databases to economics and this
+
+1165
+01:22:58,350 --> 01:22:59,270
+sort of all
+
+1166
+01:22:59,290 --> 01:23:04,810
+also you an unending stream of people from industry come to stand for interest imply
+
+1167
+01:23:04,850 --> 01:23:07,570
+machine learning problems interest fly
+
+1168
+01:23:07,590 --> 01:23:10,760
+machine learning methods to their own problems
+
+1169
+01:23:10,770 --> 01:23:13,040
+and so on
+
+1170
+01:23:13,270 --> 01:23:16,380
+this is done a couple of weeks ago students actually for there to be an
+
+1171
+01:23:16,380 --> 01:23:21,510
+article on in computerworld about the twelve i t skills
+
+1172
+01:23:21,520 --> 01:23:27,790
+that employees the employees can't say no about the you know so the totals desirable
+
+1173
+01:23:27,790 --> 01:23:32,990
+skills and all the ITN all of information technology and topping the list was actually
+
+1174
+01:23:32,990 --> 01:23:36,750
+machine learning so i think this is a good time to be learning this stuff
+
+1175
+01:23:36,750 --> 01:23:43,020
+and learning algorithms are having a large impact on many segments of science and industry
+
+1176
+01:23:43,370 --> 01:23:46,940
+amish curious about something
+
+1177
+01:23:46,960 --> 01:23:51,580
+learning algorithms one of the things that touches many areas of science and industry is
+
+1178
+01:23:51,580 --> 01:23:55,340
+a kind of curious how many people here computer science majors are in the computer
+
+1179
+01:23:55,340 --> 01:23:56,540
+science department
+
+1180
+01:23:56,620 --> 01:24:00,920
+half hunger from e e
+
+1181
+01:24:00,970 --> 01:24:05,430
+OK develop honey biologists out here
+
+1182
+01:24:05,450 --> 01:24:11,470
+well just a few not really surprise anyone for statistics
+
+1183
+01:24:11,590 --> 01:24:12,660
+OK a if few
+
+1184
+01:24:12,750 --> 01:24:16,020
+also where where they received from
+
+1185
+01:24:18,640 --> 01:24:21,250
+i see a core
+
+1186
+01:24:21,260 --> 01:24:24,110
+the and well
+
+1187
+01:24:24,160 --> 01:24:26,770
+since this device is called
+
+1188
+01:24:26,820 --> 01:24:28,930
+kenny call
+
+1189
+01:24:28,980 --> 01:24:31,760
+there are still yes right
+
+1190
+01:24:32,660 --> 01:24:34,280
+anyone else
+
+1191
+01:24:35,160 --> 01:24:36,480
+pardon MST
+
+1192
+01:24:36,490 --> 01:24:39,280
+goal so
+
+1193
+01:24:39,750 --> 01:24:42,730
+and the ship was
+
+1194
+01:24:42,780 --> 01:24:44,020
+in the
+
+1195
+01:24:44,070 --> 01:24:45,470
+i think industry
+
+1196
+01:24:45,560 --> 01:24:47,000
+people right
+
+1197
+01:24:47,280 --> 01:24:51,370
+this is again tells from from from a cross section of the class think very
+
+1198
+01:24:51,460 --> 01:24:55,720
+diverse audience in this room and that's one of the things that makes this past
+
+1199
+01:24:55,720 --> 01:24:57,930
+fun to teach in front of be and i think
+
+1200
+01:24:59,290 --> 01:25:03,960
+so in the class try to convey to you brought set of principles and tools
+
+1201
+01:25:03,960 --> 01:25:08,470
+that will be useful for doing many many things on and
+
+1202
+01:25:08,520 --> 01:25:13,490
+every summer teaches cause i can actually very confidently say that of after december no
+
+1203
+01:25:13,490 --> 01:25:17,590
+matter what you're going to do after this december one when you have completed this
+
+1204
+01:25:17,590 --> 01:25:23,090
+course of you find the thing to learn in this class very useful and these
+
+1205
+01:25:23,090 --> 01:25:26,150
+things will be useful pretty much no matter what you end up doing late in
+
+1206
+01:25:26,150 --> 01:25:26,800
+your life
+
+1207
+01:25:30,400 --> 01:25:36,040
+more logistics go over later but let's say a few words about machine learning
+
+1208
+01:25:36,050 --> 01:25:41,990
+if few machine learning grew out of early work in AI early work in artificial
+
+1209
+01:25:41,990 --> 01:25:47,800
+intelligence and the loss alamos a lost fifteen of the last ten years or so
+
+1210
+01:25:47,810 --> 01:25:49,480
+it's been view as
+
+1211
+01:25:50,380 --> 01:25:52,280
+during new capability
+
+1212
+01:25:52,290 --> 01:25:54,410
+thought computers on
+
+1213
+01:25:54,410 --> 01:25:59,200
+then we are guaranteed that this point will be correctly classified solution
+
+1214
+01:25:59,220 --> 01:26:03,090
+because the only way for a point not to become support vector is if the
+
+1215
+01:26:03,090 --> 01:26:09,300
+point is somewhere either over here over here so point this easy classified correctly when
+
+1216
+01:26:09,340 --> 01:26:12,430
+we leave it point which doesn't end up being support vector
+
+1217
+01:26:12,440 --> 01:26:16,840
+we would play classified correctly and that's where this part comes from the that's just
+
+1218
+01:26:16,840 --> 01:26:22,350
+a little little side remark so it's good to have few support vectors
+
+1219
+01:26:22,370 --> 01:26:28,440
+second sight remark is about the interpretation of the solution namely to show you before
+
+1220
+01:26:28,440 --> 01:26:31,940
+these constraints of this
+
+1221
+01:26:31,950 --> 01:26:37,710
+qualities is that we get from taking the derivatives with respect to the primal variables
+
+1222
+01:26:37,720 --> 01:26:43,540
+those with these two inequalities interestingly these two inequalities imply
+
+1223
+01:26:43,590 --> 01:26:46,290
+some kind of mechanical stability
+
+1224
+01:26:46,300 --> 01:26:53,510
+you can make the following model assume that each support vector exerts a force
+
+1225
+01:26:53,520 --> 01:27:00,510
+perpendicular to the hyperplane parallel to the w vectors of size alpha and direction y
+
+1226
+01:27:01,540 --> 01:27:06,140
+you assume that your hyperplane is the solid plane sheet
+
+1227
+01:27:06,200 --> 01:27:07,910
+the support vectors
+
+1228
+01:27:07,930 --> 01:27:09,450
+pushing on the hyperplane
+
+1229
+01:27:09,460 --> 01:27:11,650
+then the solution is
+
+1230
+01:27:11,700 --> 01:27:15,770
+in terms of being mechanically stable in the sense that
+
+1231
+01:27:15,800 --> 01:27:19,520
+this one constraint that the forces sum to zero
+
+1232
+01:27:19,610 --> 01:27:23,790
+because these are forces and these other the directions of forces
+
+1233
+01:27:23,800 --> 01:27:28,290
+in our second constraint which implies that the torques sum to zero
+
+1234
+01:27:29,140 --> 01:27:33,190
+to see that you have to write down the
+
+1235
+01:27:33,200 --> 01:27:34,790
+the definition of the talks
+
+1236
+01:27:34,800 --> 01:27:39,230
+so the talks act on this point x i and then you have to take
+
+1237
+01:27:39,250 --> 01:27:47,120
+the cross product which product with the forces forces have size five direction why i
+
+1238
+01:27:47,390 --> 01:27:49,800
+times the unit vector
+
+1239
+01:27:49,830 --> 01:27:53,480
+and on the back of the hyperplane and i use the by linearity of this
+
+1240
+01:27:53,480 --> 01:27:58,490
+which product so you can move over the y i phi into the first arguement
+
+1241
+01:27:58,530 --> 01:28:02,440
+if you move is over then you see get another w so you have w
+
+1242
+01:28:03,390 --> 01:28:05,640
+this unit vector
+
+1243
+01:28:05,660 --> 01:28:09,860
+and if you take the wedge product or cross product of two vectors that are
+
+1244
+01:28:09,860 --> 01:28:12,070
+parallel you get zero
+
+1245
+01:28:12,080 --> 01:28:17,280
+so that's nice we have mechanically stable solution anyway now finally getting to the dual
+
+1246
+01:28:17,280 --> 01:28:21,160
+problem to remember we had these constraints
+
+1247
+01:28:21,180 --> 01:28:27,250
+which we can use to eliminate the primal variables so if you plot these into
+
+1248
+01:28:27,250 --> 01:28:32,810
+the black watch function here and again i would recommend to do that then you
+
+1249
+01:28:32,810 --> 01:28:36,500
+can believe me now but you wouldn't believe me in a different way if you've
+
+1250
+01:28:36,530 --> 01:28:41,300
+done it yourself and it will not take it too much time so i always
+
+1251
+01:28:41,300 --> 01:28:44,480
+recommend to try out these things you will understand much better
+
+1252
+01:28:44,530 --> 01:28:48,910
+so if you plot these in
+
+1253
+01:28:48,930 --> 01:28:51,740
+after a few lines of algebra
+
+1254
+01:28:51,770 --> 01:28:58,250
+so you should not take more than half the page let's say for this calculation
+
+1255
+01:28:58,300 --> 01:29:00,320
+if you plug it in you get
+
+1256
+01:29:00,360 --> 01:29:04,990
+following problem you get the problem of maximizing this function of far so a function
+
+1257
+01:29:04,990 --> 01:29:06,880
+of two variables
+
+1258
+01:29:06,900 --> 01:29:09,610
+subject to certain constraints
+
+1259
+01:29:13,480 --> 01:29:19,000
+this is the constraint that you heard from here
+
+1260
+01:29:19,020 --> 01:29:22,040
+and the second one of the flies and the negative
+
+1261
+01:29:22,060 --> 01:29:26,280
+by definition of this method of life force multipliers
+
+1262
+01:29:26,280 --> 01:29:28,430
+so these are the constraints
+
+1263
+01:29:28,450 --> 01:29:31,650
+and one of the nice things about this
+
+1264
+01:29:31,680 --> 01:29:35,710
+the solution is that again the
+
+1265
+01:29:35,730 --> 01:29:39,770
+patterns x i x j only appear in the product so we know how to
+
+1266
+01:29:41,100 --> 01:29:47,140
+so both the decision function is actually before and the function to be maximized expressed
+
+1267
+01:29:47,140 --> 01:29:51,380
+in terms of the product so we can now say wherever we had this boldface
+
+1268
+01:29:51,380 --> 01:29:53,840
+x i x j what you really meant was
+
+1269
+01:29:53,850 --> 01:29:59,300
+five exi five xt so we were always talking about points in some feature space
+
+1270
+01:29:59,300 --> 01:30:04,010
+some high dimensional feature space and we're going to do the actual computation by
+
+1271
+01:30:04,400 --> 01:30:08,770
+substituting kernel of these points for this dot product so we just put in the
+
+1272
+01:30:08,800 --> 01:30:12,300
+kernel here and we put in general
+
+1273
+01:30:14,150 --> 01:30:16,280
+and then everything is done in terms of kernel
+
+1274
+01:30:16,340 --> 01:30:17,310
+even though
+
+1275
+01:30:17,340 --> 01:30:21,260
+in principle within the computation in this high dimensional feature space
+
+1276
+01:30:21,260 --> 01:30:25,840
+so what you end up with is a solution
+
+1277
+01:30:25,870 --> 01:30:28,520
+which once you've done this training
+
+1278
+01:30:28,660 --> 01:30:34,230
+number the solution which is a linear combination of kernel functions centred on a subset
+
+1279
+01:30:34,230 --> 01:30:39,510
+of the training points in the training points that have a non-zero lack of multiply
+
+1280
+01:30:39,520 --> 01:30:42,790
+and you can interpret this thing is a neural network if you like we have
+
+1281
+01:30:42,790 --> 01:30:48,300
+some inputs that compared to the support vectors by a kernel function then
+
+1282
+01:30:48,320 --> 01:30:49,700
+the outputs
+
+1283
+01:30:49,740 --> 01:30:53,280
+linearly combined using the weights which i essentially the or
+
+1284
+01:30:54,780 --> 01:30:58,950
+and then summed you get to a decision
+
+1285
+01:31:02,480 --> 01:31:06,810
+OK maybe i mean just show you a little demo again
+
+1286
+01:31:06,840 --> 01:31:10,100
+it will look very similar to
+
+1287
+01:31:19,990 --> 01:31:29,590
+so this is still something treatises so
+
+1288
+01:31:29,680 --> 01:31:32,480
+get exactly the same solution under certain conditions
+
+1289
+01:31:32,520 --> 01:31:35,780
+strong convexity which are
+
+1290
+01:31:35,880 --> 01:31:41,570
+not o is he said i suppose the genes in the work
+
+1291
+01:31:41,650 --> 01:31:46,300
+but roughly speaking if have a convex optimisation problem which is what we had done
+
+1292
+01:31:46,300 --> 01:31:48,290
+nothing wrong
+
+1293
+01:31:48,290 --> 01:31:50,460
+so in the street when
+
+1294
+01:31:51,590 --> 01:31:52,500
+in two
+
+1295
+01:31:52,500 --> 01:31:55,360
+very detail so it depends on
+
+1296
+01:31:55,380 --> 01:31:58,750
+the aspect of optimisation theory but
+
+1297
+01:31:58,930 --> 01:32:02,830
+so if all this is a list of the machines we can assume that is
+
+1298
+01:32:03,130 --> 01:32:04,470
+to do
+
+1299
+01:32:04,540 --> 01:32:08,330
+the same
+
+1300
+01:32:08,390 --> 01:32:16,350
+o thing
+
+1301
+01:32:16,390 --> 01:32:22,190
+yes and shows that people always say
+
+1302
+01:32:22,210 --> 01:32:26,470
+support vector machines are easy to to train because it is a quadratic optimisation problem
+
+1303
+01:32:26,690 --> 01:32:30,350
+it's true it's to quadratic convex optimisation problems
+
+1304
+01:32:30,470 --> 01:32:35,530
+every quadratic optimisation problem has to be convex and matrix
+
+1305
+01:32:36,960 --> 01:32:39,930
+part is positive step
+
+1306
+01:32:39,950 --> 01:32:43,410
+fortunately for data to support vector machines
+
+1307
+01:32:43,520 --> 01:32:48,290
+so the
+
+1308
+01:32:48,300 --> 01:32:50,910
+let's take two classes training points
+
+1309
+01:32:50,930 --> 01:32:52,800
+and train
+
+1310
+01:32:52,820 --> 01:32:54,280
+the solution
+
+1311
+01:32:54,320 --> 01:32:57,770
+look similar to what i showed you two days ago
+
+1312
+01:32:57,780 --> 01:33:02,790
+the decision boundary are this is boundary well
+
+1313
+01:33:02,800 --> 01:33:04,230
+depends on the
+
+1314
+01:33:04,240 --> 01:33:06,810
+i was told that i would
+
+1315
+01:33:07,030 --> 01:33:09,960
+let me take a very large value
+
+1316
+01:33:09,970 --> 01:33:13,700
+this doesn't have lasting months almost
+
+1317
+01:33:14,780 --> 01:33:21,270
+again the solution separating hyperplane is the lines of plus minus one lines with the
+
+1318
+01:33:21,270 --> 01:33:26,470
+support vector machines support vector points come to the solution depends on these three points
+
+1319
+01:33:26,480 --> 01:33:28,270
+in this case
+
+1320
+01:33:29,370 --> 01:33:32,640
+they are on the the bits
+
+1321
+01:33:32,740 --> 01:33:36,300
+so this is still
+
+1322
+01:33:36,330 --> 01:33:46,030
+successful using this very simple
+
+1323
+01:33:46,030 --> 01:33:48,290
+so what happens now
+
+1324
+01:33:48,300 --> 01:33:50,280
+so a few points
+
+1325
+01:33:51,650 --> 01:33:56,220
+correct side but we change seen in
+
+1326
+01:33:56,220 --> 01:33:57,440
+and so on
+
+1327
+01:33:57,490 --> 01:34:04,300
+now you can see it's obvious that class together because they
+
+1328
+01:34:04,300 --> 01:34:08,850
+could use something like newton quasi newton if you use newton if you can if
+
+1329
+01:34:08,850 --> 01:34:09,190
+you can
+
+1330
+01:34:09,620 --> 01:34:14,550
+if you can use the direct method that's it looks excellent choice again you would
+
+1331
+01:34:14,730 --> 01:34:19,640
+we don't catch the factorizations but you what you do cash is the permutation
+
+1332
+01:34:19,690 --> 01:34:25,370
+for the sparse matrix factorizations that's cashed across everything if you a very good choice
+
+1333
+01:34:25,370 --> 01:34:27,430
+to be something like limited memory BFGS
+
+1334
+01:34:27,440 --> 01:34:31,710
+scale to extremely large problems and i should add something here even things that would
+
+1335
+01:34:31,710 --> 01:34:33,490
+wouldn't work well
+
+1336
+01:34:33,510 --> 01:34:37,820
+with l BFGS will not work very well because you admit you've augmented with a
+
+1337
+01:34:38,880 --> 01:34:40,980
+and for methods that
+
+1338
+01:34:40,980 --> 01:34:45,550
+depend on smoothness and things like this adding that rover two
+
+1339
+01:34:45,590 --> 01:34:51,130
+quadratic term is just like it's perfect right you just it's just what they want
+
+1340
+01:34:51,130 --> 01:34:55,090
+to to make them work extremely well i'm including things like lbfgs
+
+1341
+01:34:56,890 --> 01:35:00,850
+right now we're looking so we're going to assemble the parts and cannot have everything
+
+1342
+01:35:01,020 --> 01:35:03,290
+just put them together and you'll see
+
+1343
+01:35:03,330 --> 01:35:06,710
+what's weird is although nothing i've said so far has been
+
+1344
+01:35:06,710 --> 01:35:10,730
+i mean it's all very basic so now we just start assembling so we'll start
+
+1345
+01:35:10,730 --> 01:35:17,530
+just was convex general convex optimization i mean generic problem minimize f over convex sets
+
+1346
+01:35:17,560 --> 01:35:20,570
+or reformulated reformulate radium in this way
+
+1347
+01:35:20,590 --> 01:35:23,990
+and i mean if someone comes up and says i'm going to rewrite this problem
+
+1348
+01:35:23,990 --> 01:35:27,810
+this way i mean this is just like completely stupid it doesn't look like in
+
+1349
+01:35:27,810 --> 01:35:31,490
+fact if you think about you know about how linear programming solvers work the first
+
+1350
+01:35:31,490 --> 01:35:33,200
+thing they do is they dupree solve
+
+1351
+01:35:33,200 --> 01:35:36,100
+priests of scans the problem and looks for
+
+1352
+01:35:36,140 --> 01:35:40,100
+looks for constraints this stupid right this constraints is like x one equals the one
+
+1353
+01:35:40,100 --> 01:35:44,260
+so that's exactly what we solve an LP solver does look look for constraints that
+
+1354
+01:35:44,260 --> 01:35:49,030
+are idiotically stupid it makes no the one x one replaces it here and the
+
+1355
+01:35:49,030 --> 01:35:52,600
+has all symbol table later this says oh by the way at the end please
+
+1356
+01:35:52,600 --> 01:35:56,280
+write fas e one one x one is never seen and saying here so i
+
+1357
+01:35:56,280 --> 01:36:00,640
+mean this doesn't look promising right and then i written it this way g is
+
+1358
+01:36:00,640 --> 01:36:05,580
+the following it's zero if you're in c plus infinity outside and so this does
+
+1359
+01:36:05,580 --> 01:36:09,260
+not look at it just looks too simple too that any good can come of
+
+1360
+01:36:09,260 --> 01:36:14,270
+it right OK but the algorithm is very simple so here you do this is
+
+1361
+01:36:14,270 --> 01:36:15,910
+approx tap on f
+
+1362
+01:36:17,240 --> 01:36:18,640
+in proc step
+
+1363
+01:36:18,660 --> 01:36:23,950
+with g is simple g is the indicator function an approximate the projection onto c
+
+1364
+01:36:24,060 --> 01:36:27,200
+and so you can see and i have a method that will minimize f over
+
+1365
+01:36:27,200 --> 01:36:32,660
+c but it's different for something like projected gradient although for rho extremely high it
+
+1366
+01:36:32,660 --> 01:36:34,290
+is projected gradient
+
+1367
+01:36:34,310 --> 01:36:38,310
+exactly the same and have smooth this does not require f smooth this works for
+
+1368
+01:36:38,470 --> 01:36:42,930
+african itself can contain constraints it could be something horrible but it doesn't make any
+
+1369
+01:36:42,930 --> 01:36:46,470
+difference is works just works period that and so you can see what we have
+
+1370
+01:36:46,470 --> 01:36:48,910
+is a method for minimizing f of x in c
+
+1371
+01:36:48,970 --> 01:36:52,950
+and the only method you have to implement is approx method for f
+
+1372
+01:36:52,990 --> 01:36:54,530
+that's this
+
+1373
+01:36:54,550 --> 01:36:57,620
+and you have to be able to project onto c
+
+1374
+01:36:57,640 --> 01:37:00,720
+right and you can also see here i think it's not that hard to see
+
+1375
+01:37:00,720 --> 01:37:04,560
+the row gets really large this is projected gradient method
+
+1376
+01:37:04,580 --> 01:37:07,080
+right the because this is the gradient step
+
+1377
+01:37:07,080 --> 01:37:10,140
+and this is then you make a projection and so on
+
+1378
+01:37:11,220 --> 01:37:12,890
+all right
+
+1379
+01:37:12,890 --> 01:37:15,050
+so let's
+
+1380
+01:37:15,060 --> 01:37:16,910
+let's look at animals looking less so
+
+1381
+01:37:16,930 --> 01:37:22,120
+i mean why not ten ten thousand algorithms for solving this and this probably another
+
+1382
+01:37:22,120 --> 01:37:27,140
+one developed last week or something like that with a new acronym two so
+
+1383
+01:37:27,160 --> 01:37:30,970
+OK so let let's try it so here
+
+1384
+01:37:31,060 --> 01:37:34,760
+you have a least squares term which is the standard regression terms
+
+1385
+01:37:34,780 --> 01:37:39,200
+and then you have no one sparsifying regularizer
+
+1386
+01:37:39,220 --> 01:37:42,510
+and you know spirit is very simple i mean spirit is
+
+1387
+01:37:42,530 --> 01:37:46,310
+quadratic you we have a very good way to solve those just you girls wrote
+
+1388
+01:37:46,310 --> 01:37:51,370
+a book in latin from round eighteen hundred about least squares so yes we know
+
+1389
+01:37:51,370 --> 01:37:54,950
+how to do that but we have a lot actually we have a lot behind
+
+1390
+01:37:54,950 --> 01:37:57,720
+stuff like this right a lot of
+
+1391
+01:37:57,740 --> 01:38:00,890
+what a lot of integrated knowledge over the years about how to solve problems like
+
+1392
+01:38:00,890 --> 01:38:04,160
+that with this one in there it's harder but in fact we know how to
+
+1393
+01:38:04,160 --> 01:38:07,740
+handle approximate that so it's all going to work to right this when again as
+
+1394
+01:38:07,740 --> 01:38:10,010
+you can see the splitting is like embarrassing
+
+1395
+01:38:10,330 --> 01:38:14,550
+that what really doing is taking single variable and you're replicating it calling it xin
+
+1396
+01:38:14,550 --> 01:38:18,250
+zhi and adding constraint that there is consensus that they agree with each other it
+
+1397
+01:38:18,250 --> 01:38:20,350
+sounds dumb but that's it
+
+1398
+01:38:20,350 --> 01:38:23,920
+and you end up to write this down and you get this thing you do
+
+1399
+01:38:23,920 --> 01:38:27,260
+you do you can if you want you can do factorisation caching here there's a
+
+1400
+01:38:27,260 --> 01:38:29,970
+soft thresholding and there's the dual update
+
+1401
+01:38:30,930 --> 01:38:34,220
+so there's just turn the crank
+
+1402
+01:38:34,260 --> 01:38:38,310
+just to see that it kind of works is an example of this with the
+
+1403
+01:38:38,310 --> 01:38:43,830
+dance a like fifteen had about five thousand
+
+1404
+01:38:43,850 --> 01:38:46,970
+and so if you do this is all by the way something like an eight
+
+1405
+01:38:46,970 --> 01:38:51,580
+line implementation in matlab or something station believe that we should trust in the numbers
+
+1406
+01:38:51,580 --> 01:38:56,280
+and the real implementation would be similar to but smaller numbers right so
+
+1407
+01:38:56,390 --> 01:38:59,620
+the factors asian oh by the way which is the ridge regression so it's a
+
+1408
+01:38:59,620 --> 01:39:01,680
+right that's one point three seconds
+
+1409
+01:39:01,700 --> 01:39:04,910
+and then after that you get a discount it should have been more with thirty
+
+1410
+01:39:04,910 --> 01:39:07,830
+millisecond and you can see by the way when you first iteration this is the
+
+1411
+01:39:07,830 --> 01:39:12,200
+second and subsequently this should have been something like ten millisecond right you can see
+
+1412
+01:39:12,200 --> 01:39:15,970
+that now getting all bent out of shape over how many steps it takes is
+
+1413
+01:39:15,970 --> 01:39:20,200
+completely idiotic doing that position cash right so
+
+1414
+01:39:20,240 --> 01:39:23,640
+let's all takes pride in a couple of seconds by the way you can then
+
+1415
+01:39:23,680 --> 01:39:26,530
+do the full regularisation path because you can share
+
+1416
+01:39:26,530 --> 01:39:29,720
+if you change lambda it doesn't change in any way the fact you just keep
+
+1417
+01:39:29,720 --> 01:39:31,120
+the same factorizations
+
+1418
+01:39:31,140 --> 01:39:31,990
+right so
+
+1419
+01:39:32,010 --> 01:39:36,330
+just a quick example is not that this is like six line matlab script you're
+
+1420
+01:39:36,330 --> 01:39:41,080
+actually close to competitive here i'm sorry you're in urine in the range right so
+
+1421
+01:39:41,080 --> 01:39:44,060
+you write something real quick and it's it it's right there
+
+1422
+01:39:44,060 --> 01:39:45,990
+until end type i mean
+
+1423
+01:39:46,050 --> 01:39:48,510
+nothing was tuned or anything like that so
+
+1424
+01:39:50,780 --> 01:39:53,580
+so this is just to show that knowing about these methods is good it just
+
+1425
+01:39:53,580 --> 01:39:57,450
+means you can actually put bits and pieces together and you can get something very
+
+1426
+01:39:57,450 --> 01:40:00,390
+quickly that is in the ballpark
+
+1427
+01:40:00,430 --> 01:40:05,430
+i do one more this quickly and then we'll get to distributed stuff
+
+1428
+01:40:05,430 --> 01:40:07,410
+with their questions
+
+1429
+01:40:08,890 --> 01:40:12,220
+so for sparse inverse covariance selection here
+
+1430
+01:40:12,240 --> 01:40:17,740
+you have samples from a zero mean gaussians with sigma inverse sparse
+
+1431
+01:40:17,740 --> 01:40:19,680
+and you want to estimate
+
+1432
+01:40:19,700 --> 01:40:23,640
+you want to estimate sigma right so
+
+1433
+01:40:23,660 --> 01:40:27,370
+you're right down will estimate sigma inverse which is called x here
+
+1434
+01:40:27,410 --> 01:40:32,600
+and this would be the negative these two that these two terms are the negative
+
+1435
+01:40:32,600 --> 01:40:34,060
+log likelihood
+
+1436
+01:40:34,080 --> 01:40:38,370
+you know to some constant or something actually that of course animals like the constant
+
+1437
+01:40:38,370 --> 01:40:41,950
+that the negative log likelihood and of course if you just max maximise this you
+
+1438
+01:40:41,950 --> 01:40:43,240
+get lexical sigma
+
+1439
+01:40:43,240 --> 01:40:45,360
+and this was ninety four
+
+1440
+01:40:45,370 --> 01:40:48,820
+by a younger couple phd student of mine he
+
+1441
+01:40:48,860 --> 01:40:52,160
+he developed a very simple trick
+
+1442
+01:40:52,210 --> 01:40:59,040
+we synthesize the polymer network which was not completely crosslinked applied mechanical stress that is
+
+1443
+01:40:59,040 --> 01:41:01,790
+sufficient to get these over all
+
+1444
+01:41:01,840 --> 01:41:03,440
+chain conformations
+
+1445
+01:41:03,450 --> 01:41:08,440
+that is sufficient to get the complete orientation of the liquid crystals and then under
+
+1446
+01:41:08,440 --> 01:41:14,940
+these conditions he performed the second crosslink process and end up with the robot
+
+1447
+01:41:14,970 --> 01:41:20,500
+which is in the nematic state which is completely ordered uniformly order which behaves like
+
+1448
+01:41:20,580 --> 01:41:26,880
+a single crystalline material comp is that in comparison the same sample which was not
+
+1449
+01:41:26,880 --> 01:41:29,670
+mechanically stretched during the in
+
+1450
+01:41:29,710 --> 01:41:33,010
+so this is all which does not contain such
+
+1451
+01:41:33,030 --> 01:41:38,910
+i have a clear we introduced anisotropy of the chain confirmation by sentences
+
+1452
+01:41:38,950 --> 01:41:43,040
+of course such material is much more interesting
+
+1453
+01:41:43,110 --> 01:41:49,880
+in the polycrystalline material single crystal organic or inorganic it's much more interesting than polycrystalline
+
+1454
+01:41:49,880 --> 01:41:52,610
+material and of course the question
+
+1455
+01:41:52,670 --> 01:41:57,630
+is what are the exception the properties of these networks
+
+1456
+01:41:57,650 --> 01:41:59,860
+here again summary
+
+1457
+01:41:59,870 --> 01:42:02,540
+of some basic properties
+
+1458
+01:42:02,580 --> 01:42:03,580
+we measure
+
+1459
+01:42:03,590 --> 01:42:09,710
+four such a single crystal the state of order the order the nematic order parameter
+
+1460
+01:42:09,720 --> 01:42:16,880
+as function of temperature skate all the pace transformation liquid crystal and isotropic i will
+
+1461
+01:42:16,880 --> 01:42:22,040
+not go into the details of this has been nicely investigated in detail here annually
+
+1462
+01:42:22,040 --> 01:42:27,710
+on that we get enormous more or less normally say order parameter function of nematic
+
+1463
+01:42:27,710 --> 01:42:29,290
+phase as
+
+1464
+01:42:29,850 --> 01:42:32,710
+and on the order parameter
+
+1465
+01:42:32,720 --> 01:42:36,200
+behaviour of the nematic phase as function of temperature
+
+1466
+01:42:36,240 --> 01:42:40,640
+interestingly when we look at the length of the sample
+
+1467
+01:42:40,650 --> 01:42:42,870
+the length of the sample of this
+
+1468
+01:42:42,880 --> 01:42:46,740
+microscopically ordered sister behaves very similarly
+
+1469
+01:42:46,880 --> 01:42:50,530
+in other words at high temperature the isotropic state
+
+1470
+01:42:50,550 --> 01:42:52,930
+our rubber has an expansion
+
+1471
+01:42:52,930 --> 01:42:58,160
+which is given by some expansion coefficient of such a rather and this is typically
+
+1472
+01:42:58,160 --> 01:43:00,950
+the expansion corpse efficient
+
+1473
+01:43:01,030 --> 01:43:05,770
+in which has order of magnitude of conventional liquid
+
+1474
+01:43:05,790 --> 01:43:07,450
+but when we approach
+
+1475
+01:43:07,460 --> 01:43:14,400
+the isotropic to nematic phase transformation we can identify spontaneous elongation
+
+1476
+01:43:14,400 --> 01:43:19,550
+of the network in the direction of the optical axis or in the direction of
+
+1477
+01:43:19,550 --> 01:43:22,310
+the preferred orientation
+
+1478
+01:43:22,400 --> 01:43:28,320
+of the molecule and interestingly both graphs can can be combined and if we look
+
+1479
+01:43:28,320 --> 01:43:32,260
+at the correlation of the order parameter as function of the lengths we get a
+
+1480
+01:43:32,260 --> 01:43:34,430
+linear relationship which
+
+1481
+01:43:35,710 --> 01:43:37,760
+can this nicely
+
+1482
+01:43:37,810 --> 01:43:40,650
+described in the frame of the notation
+
+1483
+01:43:40,650 --> 01:43:42,130
+the really and
+
+1484
+01:43:42,180 --> 01:43:44,470
+the slope of this line
+
+1485
+01:43:44,530 --> 01:43:45,540
+gives the
+
+1486
+01:43:45,550 --> 01:43:53,960
+so called coupling coefficients between state of all of these systems and the microscopic dimensions
+
+1487
+01:43:53,970 --> 01:43:55,450
+in other words
+
+1488
+01:43:55,500 --> 01:44:00,650
+if we know this relationship from the length of the network
+
+1489
+01:44:00,720 --> 01:44:07,390
+we cannot directly determine the state of order of the liquid crystalline phase
+
+1490
+01:44:07,390 --> 01:44:08,740
+OK we see
+
+1491
+01:44:08,770 --> 01:44:09,940
+here we see
+
+1492
+01:44:09,940 --> 01:44:15,700
+that we have a spontaneous elongation at the pace transformation of about forty percent and
+
+1493
+01:44:15,700 --> 01:44:17,650
+this of course is highly interesting
+
+1494
+01:44:17,660 --> 01:44:20,750
+i think there's no material that changes
+
+1495
+01:44:20,780 --> 01:44:23,980
+that spontaneous lists the changes
+
+1496
+01:44:23,990 --> 01:44:28,980
+its shape by forty percent within the narrow temperature range
+
+1497
+01:44:29,060 --> 01:44:31,950
+and therefore to jenin
+
+1498
+01:44:31,990 --> 01:44:36,200
+ninety seven on the basis of these first results on the such implements
+
+1499
+01:44:37,440 --> 01:44:42,940
+i made a rough calculation with the system might be used as artificial muscles
+
+1500
+01:44:43,020 --> 01:44:51,020
+it's interesting because here the thermal mechanical effect simply limited with respect to its velocity
+
+1501
+01:44:51,190 --> 01:44:54,090
+to the transportation
+
+1502
+01:44:54,120 --> 01:44:55,700
+compared to other
+
+1503
+01:44:55,710 --> 01:45:02,410
+effects for artificial muscles which are mainly to be determined by diffusion processes
+
+1504
+01:45:02,450 --> 01:45:05,810
+and according to the spot calculation
+
+1505
+01:45:05,990 --> 01:45:06,950
+there was
+
+1506
+01:45:07,130 --> 01:45:08,480
+a clear
+
+1507
+01:45:08,500 --> 01:45:15,600
+answer yes these highly interesting is highly interested gnarly interesting material for artificial moths and
+
+1508
+01:45:15,600 --> 01:45:20,620
+of course being a chemist the next question is when we have such an spontaneous
+
+1509
+01:45:20,620 --> 01:45:25,870
+elongation of forty percent of the system can we improve this
+
+1510
+01:45:25,980 --> 01:45:29,620
+coupling coefficients can we improve the
+
+1511
+01:45:29,640 --> 01:45:32,150
+mechanical behavior of the system
+
+1512
+01:45:32,160 --> 01:45:34,650
+and of course this is straightforward
+
+1513
+01:45:34,660 --> 01:45:41,540
+here we consider the so-called liquid crystal affection elastomers where the liquid crystal and it
+
+1514
+01:45:41,540 --> 01:45:45,050
+it shows side groups to the polymer backbone
+
+1515
+01:45:45,110 --> 01:45:46,160
+and if we
+
+1516
+01:45:46,210 --> 01:45:52,500
+two these liquid crystalline polymers directly within the polymer backbone then we should expect
+
+1517
+01:45:52,670 --> 01:45:55,920
+more pronounced behavior these are some
+
+1518
+01:45:55,930 --> 01:45:57,400
+recent results
+
+1519
+01:45:58,440 --> 01:46:04,530
+we have these these what like moiety is with in the polymer backbone the so-called
+
+1520
+01:46:04,530 --> 01:46:07,710
+liquid crystal made champ almost crosslink
+
+1521
+01:46:07,730 --> 01:46:14,460
+and here one example for a nice system where the pace transformation temperature from isotropic
+
+1522
+01:46:14,480 --> 01:46:17,620
+to liquid crystalline said about sixty degrees
+
+1523
+01:46:17,650 --> 01:46:19,790
+i mean temperatures
+
+1524
+01:46:23,100 --> 01:46:27,480
+as a function of temperature here we are in the isotropic state
+
+1525
+01:46:27,480 --> 01:46:30,270
+one approaching now zero
+
+1526
+01:46:30,400 --> 01:46:32,600
+there is a huge part
+
+1527
+01:46:32,600 --> 01:46:34,170
+that means energy
+
+1528
+01:46:34,230 --> 01:46:35,370
+that's crazy
+
+1529
+01:46:35,420 --> 01:46:37,330
+there shouldn't be in
+
+1530
+01:46:37,370 --> 01:46:40,000
+so some of you must have had sleepless nights
+
+1531
+01:46:40,080 --> 01:46:42,170
+not being able to explain this
+
+1532
+01:46:42,210 --> 01:46:45,000
+some of some of you actually wrote email
+
+1533
+01:46:45,040 --> 01:46:48,500
+you don't have nice i can tell that
+
+1534
+01:46:48,500 --> 01:46:50,650
+so what's going on
+
+1535
+01:46:50,670 --> 01:46:52,940
+there is only one possibility
+
+1536
+01:46:52,980 --> 01:46:54,250
+and that is
+
+1537
+01:46:54,290 --> 01:46:56,580
+there must be free charge
+
+1538
+01:46:56,640 --> 01:46:59,560
+on the glass
+
+1539
+01:46:59,620 --> 01:47:01,170
+how to get there
+
+1540
+01:47:02,210 --> 01:47:03,590
+corona discharge
+
+1541
+01:47:03,640 --> 01:47:06,230
+that's the only way you can get there
+
+1542
+01:47:06,250 --> 01:47:07,560
+keep in mind
+
+1543
+01:47:07,620 --> 01:47:09,040
+that the
+
+1544
+01:47:09,080 --> 01:47:10,900
+electric field
+
+1545
+01:47:10,940 --> 01:47:12,690
+in air
+
+1546
+01:47:12,920 --> 01:47:14,650
+in air
+
+1547
+01:47:14,710 --> 01:47:16,290
+can be no larger
+
+1548
+01:47:16,310 --> 01:47:19,190
+and three times ten two six volt meter
+
+1549
+01:47:19,230 --> 01:47:22,440
+it gets larger you get corona discharge
+
+1550
+01:47:22,460 --> 01:47:25,380
+in glass by the way
+
+1551
+01:47:25,400 --> 01:47:27,370
+it's a bit higher
+
+1552
+01:47:27,420 --> 01:47:29,540
+ten two seven both
+
+1553
+01:47:35,270 --> 01:47:37,900
+i will now make some calculations
+
+1554
+01:47:37,940 --> 01:47:41,370
+based on certain assumptions
+
+1555
+01:47:41,400 --> 01:47:46,370
+and those assumptions may not be exactly accurate because i don't know the exact dimensions
+
+1556
+01:47:46,420 --> 01:47:47,670
+of this
+
+1557
+01:47:49,040 --> 01:47:51,060
+but the exact dimensions don't matter
+
+1558
+01:47:51,080 --> 01:47:53,230
+what matters is the idea behind
+
+1559
+01:47:54,270 --> 01:47:57,140
+it does such a crazy thing
+
+1560
+01:47:57,290 --> 01:48:00,000
+so first of all i will assume that this
+
+1561
+01:48:01,310 --> 01:48:02,370
+just two
+
+1562
+01:48:02,370 --> 01:48:03,690
+parallel planes
+
+1563
+01:48:05,310 --> 01:48:10,310
+this simplifying situation because it has the shape of the bottle
+
+1564
+01:48:10,310 --> 01:48:12,370
+i will assume that the grammar
+
+1565
+01:48:12,400 --> 01:48:15,120
+produces about thirty cuneiform
+
+1566
+01:48:15,140 --> 01:48:18,540
+i know it's approximately right maybe twenty five
+
+1567
+01:48:18,560 --> 01:48:21,190
+maybe thirty five
+
+1568
+01:48:21,210 --> 01:48:24,290
+i would assume that the air gap
+
+1569
+01:48:24,350 --> 01:48:26,310
+between the outer conductor
+
+1570
+01:48:26,330 --> 01:48:30,460
+and the glasses one millimeter both one millimeter
+
+1571
+01:48:30,520 --> 01:48:32,350
+and i would assume that the glass
+
+1572
+01:48:34,120 --> 01:48:35,830
+three millimeters
+
+1573
+01:48:35,830 --> 01:48:42,830
+and i j capriati qualified for the class
+
+1574
+01:48:42,830 --> 01:48:48,730
+well that is the basis of my calculations
+
+1575
+01:48:48,770 --> 01:48:53,060
+so now i have here
+
+1576
+01:48:53,100 --> 01:48:55,870
+the conductor on the outside
+
+1577
+01:48:55,870 --> 01:48:57,580
+this is the class
+
+1578
+01:48:57,620 --> 01:48:59,940
+this is the conductor and inside
+
+1579
+01:48:59,940 --> 01:49:02,330
+so this is one millimeter thick
+
+1580
+01:49:02,370 --> 01:49:04,710
+this is three millimeters thick
+
+1581
+01:49:04,770 --> 01:49:07,120
+and this is one millimeter thick
+
+1582
+01:49:07,170 --> 01:49:09,830
+and the potential difference over the whole thing
+
+1583
+01:49:09,880 --> 01:49:14,250
+it's going to be thirty carnivals
+
+1584
+01:49:14,350 --> 01:49:15,730
+but i know
+
+1585
+01:49:15,790 --> 01:49:17,920
+that the potential difference
+
+1586
+01:49:17,980 --> 01:49:20,790
+is always times the
+
+1587
+01:49:20,810 --> 01:49:23,150
+that holds for this gap
+
+1588
+01:49:23,170 --> 01:49:27,120
+the local a kind of is the local kind of is the and the local
+
+1589
+01:49:27,150 --> 01:49:31,670
+kind that the
+
+1590
+01:49:31,670 --> 01:49:33,370
+i also know
+
+1591
+01:49:33,370 --> 01:49:36,540
+that glass
+
+1592
+01:49:36,560 --> 01:49:38,650
+is the same as in the air
+
+1593
+01:49:38,670 --> 01:49:44,520
+divided by the cap which is five
+
+1594
+01:49:44,540 --> 01:49:48,290
+and i know that the total potential difference between you and here
+
+1595
+01:49:48,310 --> 01:49:50,500
+but thirty thousand
+
+1596
+01:49:50,560 --> 01:49:53,080
+so this allows me now to calculate
+
+1597
+01:49:53,100 --> 01:49:55,270
+in a very straightforward way
+
+1598
+01:49:55,310 --> 01:49:57,770
+the electric field here in the air
+
+1599
+01:49:57,830 --> 01:49:59,670
+the electric field in the air
+
+1600
+01:49:59,690 --> 01:50:02,940
+and the electric field in the in the last because they get
+
+1601
+01:50:02,940 --> 01:50:05,690
+simple equation with one another
+
+1602
+01:50:05,750 --> 01:50:08,650
+and that's the following
+
+1603
+01:50:08,650 --> 01:50:11,000
+i first go over this gap
+
+1604
+01:50:11,020 --> 01:50:13,790
+so i get in the air
+
+1605
+01:50:14,330 --> 01:50:15,880
+times that distance
+
+1606
+01:50:16,710 --> 01:50:19,560
+which is one millimeter
+
+1607
+01:50:19,600 --> 01:50:21,230
+but of course later on
+
+1608
+01:50:21,270 --> 01:50:23,250
+i have to go through this gap again
+
+1609
+01:50:23,270 --> 01:50:27,270
+so i multiplied by two no
+
+1610
+01:50:27,290 --> 01:50:29,400
+and i have to add
+
+1611
+01:50:29,460 --> 01:50:31,560
+the electric field in the glass
+
+1612
+01:50:31,580 --> 01:50:37,040
+which is the same as and divided by five
+
+1613
+01:50:37,080 --> 01:50:38,540
+find it
+
+1614
+01:50:38,560 --> 01:50:40,440
+distance which is three
+
+1615
+01:50:40,500 --> 01:50:43,690
+that must now be
+
+1616
+01:50:43,690 --> 01:50:49,080
+thirty thousand because that's the potential difference between here and there this one equation was
+
+1617
+01:50:49,080 --> 01:50:50,080
+one and
+
+1618
+01:50:50,140 --> 01:50:52,770
+i can calculate the electric field in
+
+1619
+01:50:52,830 --> 01:50:54,620
+the air gap
+
+1620
+01:50:54,620 --> 01:50:57,310
+and the electric field in the air gap
+
+1621
+01:50:57,370 --> 01:50:58,420
+turns out to be
+
+1622
+01:50:58,440 --> 01:51:02,170
+eleven point five
+
+1623
+01:51:02,230 --> 01:51:04,020
+i'm ten to six
+
+1624
+01:51:04,080 --> 01:51:05,500
+both the media
+
+1625
+01:51:05,650 --> 01:51:08,400
+here the same of course eleven point five
+
+1626
+01:51:08,580 --> 01:51:10,900
+ten six and here
+
+1627
+01:51:10,920 --> 01:51:13,580
+it is five times smaller so i find your
+
+1628
+01:51:13,600 --> 01:51:14,940
+o point three
+
+1629
+01:51:14,960 --> 01:51:18,230
+i'm fantasic
+
+1630
+01:51:18,250 --> 01:51:21,100
+to show you that i did my homework correctly
+
+1631
+01:51:21,150 --> 01:51:23,770
+the potential difference
+
+1632
+01:51:25,040 --> 01:51:27,940
+is now eleven point five intervals
+
+1633
+01:51:27,940 --> 01:51:30,080
+but if you can afford
+
+1634
+01:51:30,100 --> 01:51:32,250
+potential difference here
+
+1635
+01:51:32,330 --> 01:51:35,920
+is now about seven kilo
+
+1636
+01:51:35,960 --> 01:51:40,190
+and the potential difference here is the same eleven point five careful
+
+1637
+01:51:40,210 --> 01:51:42,850
+and if you add them up
+
+1638
+01:51:42,850 --> 01:51:46,830
+you get very
+
+1639
+01:51:46,850 --> 01:51:48,440
+look at this
+
+1640
+01:51:48,440 --> 01:51:51,010
+for this matrix c i j
+
+1641
+01:51:51,060 --> 01:51:55,480
+now if i need to look at its compatibility
+
+1642
+01:51:55,480 --> 01:51:59,440
+don't get into the four but into the eighteen trees
+
+1643
+01:51:59,490 --> 01:52:02,760
+that's something i can still kind of before
+
+1644
+01:52:03,530 --> 01:52:05,690
+a decent computer
+
+1645
+01:52:05,730 --> 01:52:07,390
+OK now let's assume
+
+1646
+01:52:07,490 --> 01:52:11,710
+i don't want to match to graphs of size one hundred but maybe size one
+
+1647
+01:52:11,720 --> 01:52:15,300
+thousand i get into the twelve entries
+
+1648
+01:52:16,130 --> 01:52:20,290
+bad news at that time this algorithm will for
+
+1649
+01:52:20,350 --> 01:52:25,190
+so even if i had an efficient algorithm it just storing the problem can review
+
+1650
+01:52:26,620 --> 01:52:29,420
+computing this objective function can also be tissue
+
+1651
+01:52:29,480 --> 01:52:34,070
+well i have treated the bit because quite often this PCA sparse
+
+1652
+01:52:34,100 --> 01:52:36,600
+so we don't really need
+
+1653
+01:52:36,610 --> 01:52:38,830
+that many entries but still
+
+1654
+01:52:38,840 --> 01:52:42,190
+i think you get the idea
+
+1655
+01:52:44,510 --> 01:52:47,220
+basically what you do is you would set up this problem
+
+1656
+01:52:47,300 --> 01:52:50,490
+we CIJ just described the vertex features
+
+1657
+01:52:50,530 --> 01:52:51,640
+as the match
+
+1658
+01:52:51,690 --> 01:52:53,270
+thank you i j u v
+
+1659
+01:52:53,300 --> 01:52:57,030
+described the agreement between the potential age
+
+1660
+01:52:57,080 --> 01:53:01,590
+if well vertex i and you match to jane b
+
+1661
+01:53:02,940 --> 01:53:05,350
+and then you just check well if there is an edge here
+
+1662
+01:53:05,790 --> 01:53:09,240
+you've got to have an edge there is one
+
+1663
+01:53:09,250 --> 01:53:10,760
+so define it this way
+
+1664
+01:53:10,770 --> 01:53:14,340
+and you can see that if i have twice the same graph
+
+1665
+01:53:14,380 --> 01:53:16,690
+then well this function here
+
+1666
+01:53:16,700 --> 01:53:17,510
+it will be
+
+1667
+01:53:18,730 --> 01:53:21,620
+if i find exact match
+
+1668
+01:53:21,730 --> 01:53:24,930
+and once you're if it's larger than that so you can clearly see that this
+
+1669
+01:53:24,930 --> 01:53:28,160
+will give you an exact match if you wanted to
+
+1670
+01:53:28,180 --> 01:53:30,440
+travis is an NP hard problem to solve
+
+1671
+01:53:30,490 --> 01:53:32,330
+so what to do
+
+1672
+01:53:32,380 --> 01:53:34,690
+and people have used lots of
+
+1673
+01:53:34,700 --> 01:53:37,990
+algorithms for that so for instance one of the more famous ones
+
+1674
+01:53:38,110 --> 01:53:41,080
+is the credit assignment algorithm of
+
+1675
+01:53:41,250 --> 01:53:44,110
+gold and rangarajan
+
+1676
+01:53:44,120 --> 01:53:47,180
+so this is really famous in computer vision at least
+
+1677
+01:53:47,180 --> 01:53:50,380
+it basically relies on the sinkhorn
+
+1678
+01:53:50,440 --> 01:53:51,850
+methods in the middle
+
+1679
+01:53:52,990 --> 01:53:56,310
+what it does is actually something that he would say well
+
+1680
+01:53:56,380 --> 01:53:58,670
+cheating but i mean
+
+1681
+01:53:58,710 --> 01:54:02,240
+this is an area where will people really desperate
+
+1682
+01:54:02,250 --> 01:54:06,770
+people are really desperate you see it for from the fact that actually genetic algorithm
+
+1683
+01:54:06,770 --> 01:54:08,000
+and taboo search
+
+1684
+01:54:08,090 --> 01:54:11,960
+are some of the basic methods to solve quadratic assignment
+
+1685
+01:54:11,960 --> 01:54:16,080
+but they have a particular versions against them but this is usually indication that people
+
+1686
+01:54:16,080 --> 01:54:18,040
+are really hopeless
+
+1687
+01:54:18,090 --> 01:54:22,370
+or and colony system or anything else that's really desperately heuristic
+
+1688
+01:54:22,430 --> 01:54:25,640
+people use those things for quadratic assignment
+
+1689
+01:54:25,970 --> 01:54:30,420
+so in other words by saying well hey i reduce the problem to credit assignment
+
+1690
+01:54:30,420 --> 01:54:34,490
+problem that's not really gain anything i just said well hey this problem is so
+
+1691
+01:54:35,530 --> 01:54:39,160
+even if i get enough statistics and so on i will probably not be able
+
+1692
+01:54:39,160 --> 01:54:42,070
+to get a fairly good solution
+
+1693
+01:54:42,980 --> 01:54:47,350
+it is the sum and well it works the same chimney sweep things under the
+
+1694
+01:54:48,270 --> 01:54:52,500
+you just perform a first order taylor approximation of the credit assignment problem
+
+1695
+01:54:52,550 --> 01:54:57,140
+they take derivative of the quadratic term with respect to the permutation
+
+1696
+01:54:57,240 --> 01:54:58,890
+and then use all
+
+1697
+01:54:59,830 --> 01:55:00,760
+la the
+
+1698
+01:55:00,760 --> 01:55:04,560
+the first order approximations such as the immunization
+
+1699
+01:55:04,620 --> 01:55:07,490
+they take a small step in that direction
+
+1700
+01:55:07,490 --> 01:55:09,440
+nicky penetrating
+
+1701
+01:55:09,480 --> 01:55:10,730
+actually the
+
+1702
+01:55:10,780 --> 01:55:14,550
+credit assignment as a few other hacky things on the way but that's basically what
+
+1703
+01:55:14,550 --> 01:55:16,670
+it does
+
+1704
+01:55:16,710 --> 01:55:19,230
+you can find semidefinite relaxations
+
+1705
+01:55:19,270 --> 01:55:25,300
+he said you get big problem because you see it order of four
+
+1706
+01:55:25,320 --> 01:55:26,920
+in terms of storage
+
+1707
+01:55:26,930 --> 01:55:28,290
+and what's worse
+
+1708
+01:55:28,320 --> 01:55:31,440
+order of six in terms of computation
+
+1709
+01:55:31,480 --> 01:55:33,550
+so again semidefinite programs
+
+1710
+01:55:33,580 --> 01:55:34,800
+usually people
+
+1711
+01:55:34,810 --> 01:55:38,880
+and let's exactly called boyd and vandenberghe don't really solve problems of size larger than
+
+1712
+01:55:41,610 --> 01:55:43,420
+most people
+
+1713
+01:55:43,420 --> 01:55:47,070
+we'll stop at anything between one hundred and maybe five hundred
+
+1714
+01:55:47,130 --> 01:55:49,940
+just because it's very hard
+
+1715
+01:55:49,950 --> 01:55:54,020
+and if you want to go beyond that you need to do serious extr
+
+1716
+01:55:54,030 --> 01:55:55,490
+so in practice
+
+1717
+01:55:55,500 --> 01:55:59,820
+if you use credit assignment you can only really solve problems of size may be
+
+1718
+01:55:59,820 --> 01:56:01,470
+less than one hundred nodes
+
+1719
+01:56:02,210 --> 01:56:06,240
+some of the better benchmark collections i think they have like thirty forty nodes and
+
+1720
+01:56:06,240 --> 01:56:09,370
+that's where people are able to solve things are optimally
+
+1721
+01:56:09,430 --> 01:56:13,090
+so it's a serious problem
+
+1722
+01:56:13,930 --> 01:56:16,180
+in other words
+
+1723
+01:56:16,200 --> 01:56:20,120
+quadratic assignment would be really nice if it were solvable but since it isn't
+
+1724
+01:56:20,180 --> 01:56:25,230
+we probably don't want to go there
+
+1725
+01:56:26,210 --> 01:56:27,890
+what went wrong
+
+1726
+01:56:27,920 --> 01:56:31,820
+well what went wrong is that we actually spent a lot of time now discussing
+
+1727
+01:56:31,850 --> 01:56:34,550
+how are we going to solve a given problem
+
+1728
+01:56:34,630 --> 01:56:36,560
+but not much time on
+
+1729
+01:56:36,570 --> 01:56:39,740
+how they actually got to the problem
+
