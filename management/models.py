@@ -1,6 +1,5 @@
 import concurrent.futures
 import os
-from typing import List
 
 import webvtt
 from django.core.exceptions import ValidationError
@@ -100,26 +99,6 @@ class TranscriptIndex(models.Model):
         verbose_name_plural = _("Transcript Indexes")
 
 
-@receiver(signal=post_save, sender=Video)
-def process_video(**kwargs):
-    instance: Video = kwargs["instance"]
-    vid_id = instance.id
-    path = instance.transcript.path
-
-    objs = []
-
-    print("Dumping ")
-
-    for subtitle in webvtt.read(path):
-        objs.append(VideoTranscript(video_id=vid_id, start=subtitle.start, end=subtitle.end, subtitle=subtitle.text))
-
-    VideoTranscript.objects.bulk_create(objs)
-    TranscriptIndex.objects.bulk_create(objects)
-    objects.clear()
-
-    print("Dumped Successfully!")
-
-
 def index_transcript(obj):
     body = {
         "video_id": obj.video_id,
@@ -128,16 +107,24 @@ def index_transcript(obj):
         "subtitle": obj.subtitle
     }
 
-    index = obj.id
-
-    res = es.index(index="vidspark", doc_type="transcript", body=body, id=index)
+    res = es.index(index="vidspark", doc_type="transcript", body=body, id=obj.id)
     objects.append(TranscriptIndex(transcript=obj, index=res["_id"]))
-    print(res["_id"])
 
 
-@receiver(signal=post_bulk_create, sender=VideoTranscript)
-def process_transcript(**kwargs):
-    objs: List[VideoTranscript] = kwargs["objs"]
+@receiver(signal=post_save, sender=Video)
+def process_video(**kwargs):
+    instance: Video = kwargs["instance"]
+    vid_id = instance.id
+    path = instance.transcript.path
+
+    print("Dumping ")
+
+    objs = []
+    for subtitle in webvtt.read(path):
+        trans = VideoTranscript(video_id=vid_id, start=subtitle.start, end=subtitle.end, subtitle=subtitle.text)
+        trans.save()
+
+        objs.append(trans)
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
         process = {executor.submit(index_transcript, obj): obj for obj in objs}
@@ -146,3 +133,8 @@ def process_transcript(**kwargs):
                 exception = future.exception()
                 print(exception)
                 os._exit(1)
+
+    TranscriptIndex.objects.bulk_create(objects)
+    objects.clear()
+
+    print("Dumped Successfully!")
