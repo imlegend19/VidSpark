@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -39,21 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'drf_user',
     'rest_framework',
     'django_filters',
     'drfaddons',
+    'drf_yasg',
     'management'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware',
 ]
 
 ROOT_URLCONF = 'VidSpark.urls'
@@ -114,15 +118,25 @@ TEMPLATES = [
     },
 ]
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000',
+    'localhost:4200',
+)
+
+CSRF_TRUSTED_ORIGINS = CORS_ORIGIN_WHITELIST
+
+CORS_ALLOW_METHODS = (
+    'GET',
+    'OPTIONS',
+    'POST',
+    'PUT'
+)
+
 WSGI_APPLICATION = 'VidSpark.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
     'drf_user.auth.MultiFieldModelBackend',
 ]
-
-JWT_AUTH = {
-    'JWT_PAYLOAD_HANDLER': 'drf_user.auth.jwt_payload_handler',
-}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -135,11 +149,75 @@ DATABASES = {
 }
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES'    : (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'drfaddons.auth.JSONWebTokenAuthenticationQS',
     ),
+
     'DEFAULT_PAGINATION_CLASS'      : 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE'                     : 10,
+
+    'DEFAULT_PARSER_CLASSES'        : (
+        'rest_framework.parsers.JSONParser',
+    ),
+
+    'DEFAULT_RENDERER_CLASSES'      : (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+
+    'DEFAULT_FILTER_BACKENDS'       : (
+        'drfaddons.filters.IsOwnerFilterBackend',
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_ENCODE_HANDLER': 'rest_framework_jwt.utils.jwt_encode_handler',
+
+    'JWT_DECODE_HANDLER': 'rest_framework_jwt.utils.jwt_decode_handler',
+
+    'JWT_PAYLOAD_HANDLER': 'drf_user.auth.jwt_payload_handler',
+
+    'JWT_PAYLOAD_GET_USER_ID_HANDLER': 'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler',
+
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_response_payload_handler',
+
+    'JWT_SECRET_KEY': SECRET_KEY,
+    'JWT_GET_USER_SECRET_KEY': None,
+    'JWT_PUBLIC_KEY': None,
+    'JWT_PRIVATE_KEY': None,
+    'JWT_ALGORITHM': 'HS512',
+    'JWT_VERIFY': True,
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_LEEWAY': 0,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=4),
+    'JWT_AUDIENCE': None,
+    'JWT_ISSUER': None,
+    'JWT_ALLOW_REFRESH': False,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_AUTH_COOKIE': None,
+}
+
+JWT_AUTH_KEY = 'Authorization'
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_FIELD_INSPECTORS': [
+        'drf_yasg.inspectors.CamelCaseJSONFilter',
+        'drf_yasg.inspectors.InlineSerializerInspector',
+        'drf_yasg.inspectors.RelatedFieldInspector',
+        'drf_yasg.inspectors.ChoiceFieldInspector',
+        'drf_yasg.inspectors.FileFieldInspector',
+        'drf_yasg.inspectors.DictFieldInspector',
+        'drf_yasg.inspectors.HiddenFieldInspector',
+        'drf_yasg.inspectors.RecursiveFieldInspector',
+        'drf_yasg.inspectors.SerializerMethodFieldInspector',
+        'drf_yasg.inspectors.SimpleFieldInspector',
+        'drf_yasg.inspectors.StringDefaultFieldInspector',
+    ],
 }
 
 user_settings = {
@@ -154,7 +232,7 @@ user_settings = {
     'MOBILE_VALIDATION'   : False,
     'EMAIL_VALIDATION'    : True,
     'REGISTRATION'        : {
-        'SEND_MAIL'     : False,
+        'SEND_MAIL'     : True,
         'SEND_MESSAGE'  : False,
         'MAIL_SUBJECT'  : 'Welcome to VidSpark',
         'SMS_BODY'      : 'Your account has been created',
