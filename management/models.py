@@ -21,6 +21,7 @@ class CustomQuerySet(models.QuerySet):
         pre_bulk_create.send(sender=self.model, objs=objs, batch_size=batch_size)
         res = super(CustomQuerySet, self).bulk_create(objs, batch_size)
         post_bulk_create.send(sender=self.model, objs=objs, batch_size=batch_size)
+
         return res
 
 
@@ -39,6 +40,7 @@ class Speaker(models.Model):
 class Video(CreateUpdateModel):
     title = models.CharField(verbose_name=_("Title"), max_length=255)
     transcript = models.FileField(verbose_name=_("Transcript"), upload_to="data/")
+    speaker = models.ForeignKey(verbose_name=_("Speaker"), to=Speaker, on_delete=models.CASCADE)
     indexed = models.BooleanField(verbose_name=_("Indexed"), default=False)
 
     def save(self, *args, **kwargs):
@@ -54,19 +56,6 @@ class Video(CreateUpdateModel):
         db_table = "videos"
         verbose_name = _("Video")
         verbose_name_plural = _("Videos")
-
-
-class VideoSpeaker(models.Model):
-    video = models.ForeignKey(verbose_name=_("Video"), to=Video, on_delete=models.CASCADE)
-    speaker = models.ForeignKey(verbose_name=_("Speaker"), to=Speaker, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.video.title
-
-    class Meta:
-        db_table = "video_speaker"
-        verbose_name = _("Video Speaker")
-        verbose_name_plural = _("Video Speakers")
 
 
 class VideoTranscript(models.Model):

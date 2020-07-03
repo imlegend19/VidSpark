@@ -19,6 +19,7 @@ from django.urls import include, path, re_path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from rest_framework_jwt.views import obtain_jwt_token
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -28,7 +29,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact(email="support@vidspark.com"),
         license=openapi.License(name="MIT License"),
     ),
-    validators=['flex'],
+    validators=['flex', 'ssv'],
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
@@ -38,15 +39,16 @@ admin.site.site_title = "VidSpark Administration"
 admin.site.index_title = "Admin"
 
 urlpatterns = [
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$',
-            schema_view.without_ui('cache_timeout=None'), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=None),
-         name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=None),
-         name='schema-redoc'),
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    path('api/token/', obtain_jwt_token),
+    path('api/user/', include('drf_user.urls', namespace='user')),
+    path('api/management/', include('management.urls', namespace='management')),
     path('', admin.site.urls),
-    path('api/user/', include('drf_user.urls'))
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$',
+            schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
+         name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+         name='schema-redoc'),
 ]
-

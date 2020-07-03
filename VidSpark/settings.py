@@ -104,8 +104,7 @@ JET_SIDE_MENU_COMPACT = True
 TEMPLATES = [
     {
         'BACKEND' : 'django.template.backends.django.DjangoTemplates',
-        'DIRS'    : [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS'    : [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS' : {
             'context_processors': [
@@ -118,10 +117,9 @@ TEMPLATES = [
     },
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:8000',
-    'localhost:4200',
-)
+CORS_ORIGIN_WHITELIST = [
+    'https://localhost:8080'
+]
 
 CSRF_TRUSTED_ORIGINS = CORS_ORIGIN_WHITELIST
 
@@ -129,7 +127,8 @@ CORS_ALLOW_METHODS = (
     'GET',
     'OPTIONS',
     'POST',
-    'PUT'
+    'PUT',
+    'PATCH'
 )
 
 WSGI_APPLICATION = 'VidSpark.wsgi.application'
@@ -218,6 +217,13 @@ SWAGGER_SETTINGS = {
         'drf_yasg.inspectors.SimpleFieldInspector',
         'drf_yasg.inspectors.StringDefaultFieldInspector',
     ],
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
 }
 
 user_settings = {
