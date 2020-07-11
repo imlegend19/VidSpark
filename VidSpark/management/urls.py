@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import *
+from VidSpark.management.views import *
 
 app_name = "management"
 

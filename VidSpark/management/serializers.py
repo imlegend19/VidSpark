@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from management.models import Speaker, Video
+from VidSpark.management.models import Speaker, Video
 
 
 class SpeakerSerializer(serializers.ModelSerializer):

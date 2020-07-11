@@ -1,7 +1,3 @@
-import concurrent.futures
-import os
-
-import webvtt
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save
@@ -9,13 +5,11 @@ from django.dispatch import Signal, receiver
 from django.utils.text import gettext_lazy as _
 from drfaddons.models import CreateUpdateModel
 
-from .tasks import process_video_url
-from .utils import get_youtube_vid_id, get_video_url, get_transcript_url
-from VidSpark import es, THREADS
+from VidSpark.management.tasks import process_transcript, process_video_url
+from VidSpark.management.utils import get_youtube_vid_id, get_video_url, get_transcript_url
 
 pre_bulk_create = Signal(providing_args=["objs", "batch_size"])
 post_bulk_create = Signal(providing_args=["objs", "batch_size"])
-objects = []
 
 
 class CustomQuerySet(models.QuerySet):
@@ -41,9 +35,9 @@ class Speaker(models.Model):
 
 class Video(CreateUpdateModel):
     title = models.CharField(verbose_name=_("Title"), max_length=255)
-    video = models.FileField(verbose_name=_("Video"), upload_to=get_video_url)
-    video_url = models.CharField(verbose_name=_("Video URL"), max_length=255)
-    transcript = models.FileField(verbose_name=_("Transcript"), upload_to=get_transcript_url)
+    video = models.FileField(verbose_name=_("Video"), upload_to=get_video_url, blank=True, null=True)
+    video_url = models.CharField(verbose_name=_("Video URL"), max_length=255, blank=True, null=True)
+    transcript = models.FileField(verbose_name=_("Transcript"), upload_to=get_transcript_url, blank=True, null=True)
     speaker = models.ForeignKey(verbose_name=_("Speaker"), to=Speaker, on_delete=models.CASCADE)
     indexed = models.BooleanField(verbose_name=_("Indexed"), default=False)
 
@@ -101,46 +95,12 @@ class TranscriptIndex(models.Model):
         verbose_name_plural = _("Transcript Indexes")
 
 
-def index_transcript(obj):
-    body = {
-        "video_id": obj.video_id,
-        "start"   : obj.start,
-        "end"     : obj.end,
-        "subtitle": obj.subtitle
-    }
-
-    res = es.index(index="vidspark", doc_type="transcript", body=body, id=obj.id)
-    objects.append(TranscriptIndex(transcript=obj, index=res["_id"]))
-
-
 @receiver(signal=post_save, sender=Video)
 def process_video(**kwargs):
     instance: Video = kwargs["instance"]
     vid_id = instance.id
-    path = instance.transcript.path
 
-    if path:
-        print("Dumping ")
-
-        objs = []
-        for subtitle in webvtt.read(path):
-            trans = VideoTranscript(video_id=vid_id, start=subtitle.start, end=subtitle.end, subtitle=subtitle.text)
-            trans.save()
-
-            objs.append(trans)
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
-            process = {executor.submit(index_transcript, obj): obj for obj in objs}
-            for future in concurrent.futures.as_completed(process):
-                if future.exception():
-                    exception = future.exception()
-                    print(exception)
-                    os._exit(1)
-
-        TranscriptIndex.objects.bulk_create(objects)
-        objects.clear()
-
-        print("Dumped Successfully!")
+    if instance.transcript:
+        process_transcript.delay(instance.transcript.path, vid_id)
     else:
-        yt_id = get_youtube_vid_id(instance.video_url)
-        process_video_url.delay(yt_id, vid_id)
+        process_video_url.delay(instance.video.url, vid_id)

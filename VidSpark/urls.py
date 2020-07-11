@@ -43,7 +43,7 @@ urlpatterns = [
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('api/token/', obtain_jwt_token),
     path('api/user/', include('drf_user.urls', namespace='user')),
-    path('api/management/', include('management.urls', namespace='management')),
+    path('api/management/', include('VidSpark.management.urls', namespace='management')),
     path('', admin.site.urls),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),
