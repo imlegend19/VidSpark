@@ -1,8 +1,14 @@
+from __future__ import absolute_import, unicode_literals
+
 import os
 from pathlib import Path
 import multiprocessing as mp
 
 from elasticsearch import Elasticsearch
+from .celery import app as celery_app
+
+__all__ = ('celery_app',)
+
 from pyspark.sql import SparkSession
 
 ROOT = Path(os.path.abspath(os.curdir))
@@ -14,7 +20,7 @@ for jar in os.listdir(os.path.join(ROOT, "jars")):
 EXTRA_JARS = ",".join(jars)
 DATABASE = os.path.join(ROOT, "db.sqlite3")
 
-# print("Initialising VidSpark...")
+# print("Initialising Spark...")
 # spark = SparkSession \
 #     .builder \
 #     .appName("VidSpark") \

@@ -9,6 +9,8 @@ from django.dispatch import Signal, receiver
 from django.utils.text import gettext_lazy as _
 from drfaddons.models import CreateUpdateModel
 
+from .tasks import process_video_url
+from .utils import get_youtube_vid_id, get_video_url, get_transcript_url
 from VidSpark import es, THREADS
 
 pre_bulk_create = Signal(providing_args=["objs", "batch_size"])
@@ -39,15 +41,26 @@ class Speaker(models.Model):
 
 class Video(CreateUpdateModel):
     title = models.CharField(verbose_name=_("Title"), max_length=255)
-    transcript = models.FileField(verbose_name=_("Transcript"), upload_to="data/")
+    video = models.FileField(verbose_name=_("Video"), upload_to=get_video_url)
+    video_url = models.CharField(verbose_name=_("Video URL"), max_length=255)
+    transcript = models.FileField(verbose_name=_("Transcript"), upload_to=get_transcript_url)
     speaker = models.ForeignKey(verbose_name=_("Speaker"), to=Speaker, on_delete=models.CASCADE)
     indexed = models.BooleanField(verbose_name=_("Indexed"), default=False)
 
     def save(self, *args, **kwargs):
-        if self.transcript.name.split(".")[-1] in ["srt", "vtt"]:
-            super().save(*args, **kwargs)
+        if not self.transcript:
+            if not self.video_url:
+                raise ValidationError(message=_("No transcript, video or video url provided!"))
+            else:
+                if get_youtube_vid_id(self.video_url):
+                    super().save(*args, **kwargs)
+                else:
+                    raise ValidationError(message=_("Invalid video url"))
         else:
-            raise ValidationError(message=_("Invalid File!"))
+            if self.transcript.name.split(".")[-1] in ["srt", "vtt"]:
+                super().save(*args, **kwargs)
+            else:
+                raise ValidationError(message=_("Invalid transcript file!"))
 
     def __str__(self):
         return self.title
@@ -106,24 +119,28 @@ def process_video(**kwargs):
     vid_id = instance.id
     path = instance.transcript.path
 
-    print("Dumping ")
+    if path:
+        print("Dumping ")
 
-    objs = []
-    for subtitle in webvtt.read(path):
-        trans = VideoTranscript(video_id=vid_id, start=subtitle.start, end=subtitle.end, subtitle=subtitle.text)
-        trans.save()
+        objs = []
+        for subtitle in webvtt.read(path):
+            trans = VideoTranscript(video_id=vid_id, start=subtitle.start, end=subtitle.end, subtitle=subtitle.text)
+            trans.save()
 
-        objs.append(trans)
+            objs.append(trans)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
-        process = {executor.submit(index_transcript, obj): obj for obj in objs}
-        for future in concurrent.futures.as_completed(process):
-            if future.exception():
-                exception = future.exception()
-                print(exception)
-                os._exit(1)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
+            process = {executor.submit(index_transcript, obj): obj for obj in objs}
+            for future in concurrent.futures.as_completed(process):
+                if future.exception():
+                    exception = future.exception()
+                    print(exception)
+                    os._exit(1)
 
-    TranscriptIndex.objects.bulk_create(objects)
-    objects.clear()
+        TranscriptIndex.objects.bulk_create(objects)
+        objects.clear()
 
-    print("Dumped Successfully!")
+        print("Dumped Successfully!")
+    else:
+        yt_id = get_youtube_vid_id(instance.video_url)
+        process_video_url.delay(yt_id, vid_id)
