@@ -4,8 +4,9 @@ from django.db.models.signals import post_save
 from django.dispatch import Signal, receiver
 from django.utils.text import gettext_lazy as _
 from drfaddons.models import CreateUpdateModel
+from drf_user.models import User
 
-from VidSpark.management.tasks import process_transcript, process_video_url
+from VidSpark.management.tasks import process_transcript, process_video_url, download_video
 from VidSpark.management.utils import get_youtube_vid_id, get_video_url, get_transcript_url
 
 pre_bulk_create = Signal(providing_args=["objs", "batch_size"])
@@ -38,7 +39,7 @@ class Video(CreateUpdateModel):
     video = models.FileField(verbose_name=_("Video"), upload_to=get_video_url, blank=True, null=True)
     video_url = models.CharField(verbose_name=_("Video URL"), max_length=255, blank=True, null=True)
     transcript = models.FileField(verbose_name=_("Transcript"), upload_to=get_transcript_url, blank=True, null=True)
-    speaker = models.ForeignKey(verbose_name=_("Speaker"), to=Speaker, on_delete=models.CASCADE)
+    speaker = models.ForeignKey(verbose_name=_("Speaker"), related_name='videos', to=Speaker, on_delete=models.CASCADE)
     indexed = models.BooleanField(verbose_name=_("Indexed"), default=False)
 
     def save(self, *args, **kwargs):
@@ -95,12 +96,29 @@ class TranscriptIndex(models.Model):
         verbose_name_plural = _("Transcript Indexes")
 
 
+class Search(models.Model):
+    create_date = models.DateTimeField(verbose_name=_('Create Date/Time'), auto_now_add=True)
+    update_date = models.DateTimeField(verbose_name=_('Date/Time Modified'), auto_now=True)
+    requester = models.ForeignKey(verbose_name=_("Created by"), to=User, on_delete=models.PROTECT)
+    query = models.TextField(verbose_name=_("Query"))
+    fuzzy = models.BooleanField(verbose_name=_("Fuzzy"), default=False)
+
+    class Meta:
+        db_table = "search"
+        verbose_name = _("Search")
+        verbose_name_plural = _("Search")
+
+
 @receiver(signal=post_save, sender=Video)
 def process_video(**kwargs):
     instance: Video = kwargs["instance"]
     vid_id = instance.id
 
-    if instance.transcript:
-        process_transcript.delay(instance.transcript.path, vid_id)
-    else:
-        process_video_url.delay(instance.video.url, vid_id)
+    if not instance.indexed:
+        if instance.transcript:
+            process_transcript.delay(instance.transcript.path, vid_id)
+        else:
+            process_video_url.delay(instance.video_url, vid_id)
+
+        if instance.video_url and not instance.video:
+            download_video.delay(instance.video_url, vid_id)

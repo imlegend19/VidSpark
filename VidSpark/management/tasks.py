@@ -12,6 +12,8 @@ from VidSpark import ROOT, THREADS, es
 from VidSpark.celery import app
 from VidSpark.management.utils import get_youtube_vid_id
 
+CACHE = os.path.join(ROOT, ".cache")
+
 
 def index_transcript(obj):
     body = {
@@ -27,7 +29,16 @@ def index_transcript(obj):
 
 @app.task(name="process_transcript")
 def process_transcript(path, vid_id):
-    print("Dumping ")
+    vts = VidSpark.management.models.VideoTranscript.objects.filter(video_id=vid_id)
+    print("VTS:", vts)
+
+    vt: VidSpark.management.models.VideoTranscript
+    for vt in vts:
+        try:
+            obj = VidSpark.management.models.TranscriptIndex.objects.get(transcript=vt)
+            es.delete(index="vidspark", doc_type="transcript", id=obj.index)
+        except Exception:
+            break
 
     objs = []
     for subtitle in read(path):
@@ -52,7 +63,36 @@ def process_transcript(path, vid_id):
     VidSpark.management.models.TranscriptIndex.objects.bulk_create(objects)
     objects.clear()
 
-    print("Dumped Successfully!")
+    video = VidSpark.management.models.Video.objects.get(pk=vid_id)
+    video.indexed = True
+    video.save()
+
+
+@app.task(name="download_video")
+def download_video(url, pk):
+    path = os.path.join(CACHE, f"{pk}.mp4")
+
+    yt = YouTube(url)
+    yt.streams \
+        .filter(progressive=True, file_extension="mp4") \
+        .order_by("resolution")[-1] \
+        .download(output_path=CACHE, filename=str(pk))
+
+    video = File(path)
+
+    try:
+        os.remove(path)
+    except FileNotFoundError:
+        pass
+
+    while True:
+        try:
+            obj = VidSpark.management.models.Video.objects.get(pk=pk)
+            obj.video = video
+            obj.save()
+            break
+        except Exception:
+            pass
 
 
 @app.task(name="video_processing")
@@ -80,26 +120,15 @@ def process_video_url(url, pk):
 
         vtt.captions.append(caption)
 
-    path = os.path.join(ROOT, ".cache")
-    if not os.path.isdir(path):
-        os.mkdir(path)
+    if not os.path.isdir(CACHE):
+        os.mkdir(CACHE)
 
-    path = os.path.join(path, f"{vid_id}.vtt")
+    path = os.path.join(CACHE, f"{vid_id}.vtt")
     vtt.save(path)
 
     transcript = File(open(path, "rb"))
-
-    yt = YouTube(url)
-    yt.streams \
-        .filter(progressive=True, file_extension="mp4") \
-        .order_by("resolution")[-1] \
-        .download(output_path=path, filename=str(pk))
-
-    video = File(os.path.join(path, f"{pk}.mp4"))
+    os.remove(path)
 
     obj = VidSpark.management.models.Video.objects.get(pk=pk)
     obj.transcript = transcript
-    obj.video = video
     obj.save()
-
-    os.remove(path)

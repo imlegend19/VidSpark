@@ -11,4 +11,5 @@ urlpatterns = [
     path('speaker/', SpeakerListView.as_view(), name="speaker-list-create"),
     path('speaker/<int:pk>/', SpeakerRetrieveUpdateView.as_view(), name="speaker-retrieve-update-view"),
     path('speaker/create/', SpeakerCreateView.as_view(), name="speaker-create"),
+    path('search/', search, name="search-videos"),
 ]

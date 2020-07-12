@@ -13,6 +13,8 @@ import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from VidSpark import THREADS
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -254,6 +256,7 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Asia/Kolkata"
+CELERYD_CONCURRENCY = THREADS
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

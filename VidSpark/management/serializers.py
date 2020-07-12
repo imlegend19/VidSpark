@@ -1,19 +1,19 @@
 from rest_framework import serializers
 
-from VidSpark.management.models import Speaker, Video
+from drf_user.serializers import UserSerializer
+from VidSpark.management.models import Search, Speaker, Video
 
 
 class SpeakerSerializer(serializers.ModelSerializer):
-    videos = serializers.HyperlinkedRelatedField(
+    videos = serializers.PrimaryKeyRelatedField(
         many=True,
-        read_only=True,
-        view_name='video-detail'
+        read_only=True
     )
 
     class Meta:
         model = Speaker
         fields = ["name", "videos"]
-        read_only_fields = fields
+        lookup_field = "video"
 
 
 class VideoSerializer(serializers.ModelSerializer):
@@ -21,3 +21,9 @@ class VideoSerializer(serializers.ModelSerializer):
         model = Video
         fields = ["title", "transcript", "speaker", "indexed"]
         read_only_fields = ["indexed"]
+
+
+class SearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Search
+        fields = ["query", "requester", "fuzzy"]
