@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from drf_user.serializers import UserSerializer
 from VidSpark.management.models import Search, Speaker, Video
 
 

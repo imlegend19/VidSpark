@@ -20,16 +20,16 @@ for jar in os.listdir(os.path.join(ROOT, "jars")):
 EXTRA_JARS = ",".join(jars)
 DATABASE = os.path.join(ROOT, "db.sqlite3")
 
-# print("Initialising Spark...")
-# spark = SparkSession \
-#     .builder \
-#     .appName("VidSpark") \
-#     .master("local[2]") \
-#     .config("spark.jars", EXTRA_JARS) \
-#     .getOrCreate()
-#
-# spark.conf.set("es.index.auto.create", "true")
-# print("Initialised!")
+print("Initialising Spark...")
+spark = SparkSession \
+    .builder \
+    .appName("VidSpark") \
+    .master("local[2]") \
+    .config("spark.jars", EXTRA_JARS) \
+    .getOrCreate()
+
+spark.conf.set("es.index.auto.create", "true")
+print("Initialised!")
 
 print("Starting Elasticsearch...")
 es = Elasticsearch()

@@ -120,7 +120,7 @@ TEMPLATES = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'https://localhost:8080'
+    'https://localhost:8000'
 ]
 
 CSRF_TRUSTED_ORIGINS = CORS_ORIGIN_WHITELIST
@@ -241,7 +241,7 @@ user_settings = {
     'EMAIL_VALIDATION'    : True,
     'REGISTRATION'        : {
         'SEND_MAIL'     : True,
-        'SEND_MESSAGE'  : False,
+        'SEND_MESSAGE'  : True,
         'MAIL_SUBJECT'  : 'Welcome to VidSpark',
         'SMS_BODY'      : 'Your account has been created',
         'TEXT_MAIL_BODY': 'Your account has been created.',
