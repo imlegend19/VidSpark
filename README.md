@@ -28,7 +28,7 @@ A video repository management system powered by ***Spark*** and ***Elasticsearch
      $ python3 -m venv venv
      $ source venv/bin/activate
      ``` 
- 3. Install the requirements: `$ pip install requirements.txt`
+ 3. Install the requirements: `$ pip install -r requirements.txt`
  4. Download & setup *elasticsearch*: `https://www.elastic.co/downloads/elasticsearch`
  5. Download & setup *Apache Spark*: `https://spark.apache.org/downloads.html`
  6. Create elasticsearch alias:
